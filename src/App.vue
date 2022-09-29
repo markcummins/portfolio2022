@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <AppShell>
+    <NavTop />
+    <HeaderMap />
+  </AppShell>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, provide } from "vue";
+import AppShell from "./components/app-shell.vue";
+import NavTop from "./components/nav-top/nav.vue";
+import HeaderMap from "./components/header-map.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
-</script>
+    NavTop,
+    AppShell,
+    HeaderMap,
+  },
+  setup() {
+    const theme = ref("dark");
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    provide("theme", theme);
+    provide("switchTheme", () => {
+      theme.value = theme.value === "dark" ? "light" : "dark";
+      console.log(theme.value);
+    });
+
+    return {
+      theme,
+    };
+  },
+};
+</script>
