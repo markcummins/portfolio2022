@@ -2,6 +2,7 @@
   <AppShell>
     <NavTop />
     <HeaderMap />
+    <Statistics />
   </AppShell>
 </template>
 
@@ -9,6 +10,7 @@
 import { ref, provide } from "vue";
 import AppShell from "./components/app-shell.vue";
 import NavTop from "./components/nav-top/nav.vue";
+import Statistics from "./components/statistics/statistics.vue";
 import HeaderMap from "./components/header-map.vue";
 
 export default {
@@ -16,6 +18,7 @@ export default {
   components: {
     NavTop,
     AppShell,
+    Statistics,
     HeaderMap,
   },
   setup() {
@@ -24,7 +27,6 @@ export default {
     provide("theme", theme);
     provide("switchTheme", () => {
       theme.value = theme.value === "dark" ? "light" : "dark";
-      console.log(theme.value);
     });
 
     return {

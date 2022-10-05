@@ -2,10 +2,10 @@
   <div id="nav-top-desktop" :class="{ 'nav-hidden': scrollDirection === 'down' }">
     <div>
       <div>
-        <span>1. Foo</span>
-        <span>2. Bar</span>
+        <span>1. About</span>
+        <span>1. Projects</span>
         <span>3. Hello</span>
-        <span>4. World</span>
+        <span>4. Contact</span>
       </div>
       <Transition name="fade">
         <IconDark v-if="theme === 'dark'" @click="switchTheme()" />
@@ -32,8 +32,6 @@ export default {
   setup() {
     const theme = inject("theme");
     const switchTheme = inject("switchTheme");
-
-    console.log(switchTheme);
 
     const currentScroll = ref(0);
     const scrollDirection = ref("");
@@ -67,6 +65,11 @@ export default {
 }
 
 #nav-top-desktop {
+  &.nav-hidden > div {
+    transform: translateY(-100%);
+    box-shadow: 0 0 0 0 rgb(var(--neutral-50));
+  }
+
   > div {
     top: 0;
     left: 0;
@@ -82,11 +85,6 @@ export default {
     background: rgba(var(--neutral-100), 0.1);
     box-shadow: 0 10px 30px -10px rgb(var(--neutral-50));
     transition: box-shadow 0.15s ease-in-out, transform 0.2s ease-in-out;
-
-    &.nav-hidden {
-      transform: translateY(-100%);
-      box-shadow: 0 0 0 0 rgb(var(--neutral-50));
-    }
 
     > div {
       display: flex;

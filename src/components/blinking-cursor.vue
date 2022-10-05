@@ -1,5 +1,5 @@
 <template>
-  <span class="blinking-cursor" :class="{ active: blink }">|</span>
+  <span class="blinking-cursor" :class="{ active: blink }"></span>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
     repeat: {
       type: Number,
       required: false,
-      default: 1000,
+      default: 500,
     },
   },
   setup(props) {
@@ -36,9 +36,13 @@ export default {
 
 <style>
 .blinking-cursor {
-  color: inherit;
+  width: 8px;
+  display: block;
+  height: 16px;
+  background-color: #fff;
+  transition: background-color 0.05s;
 }
 .blinking-cursor.active {
-  color: transparent;
+  background-color: transparent;
 }
 </style>

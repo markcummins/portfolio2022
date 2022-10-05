@@ -3,36 +3,33 @@
     <div ref="map" id="map"></div>
     <div ref="content" class="content">
       <div class="content-lhs" ref="contentLhs">
-        <h3><i>Hello, my name is</i></h3>
-        <h1>Mark Cummins</h1>
-        <h3>I am a software developer from 🇮🇪 Ireland</h3>
-        <h4>
-          root@root: $ echo <i ref="animatedTxt"></i>
-          <Blinky />
-        </h4>
+        <img class="profile-picture" alt="Picture of Me" src="~@/assets/me.jpg" />
       </div>
       <div class="content-rhs" ref="contentRhs">
-        <!-- <h3>world</h3> -->
-        <img class="profile-picture" alt="Picture of Me" src="~@/assets/me.jpg" />
+        <p class="font-mono text-primary">Hi, my name is</p>
+        <h1 class="text-primary">Mark Cummins.</h1>
+        <h2>I build things for the web.</h2>
+        <br />
+        <Terminal v-if="terminalEnabled" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 
 import { gsap } from "gsap";
-import { TextPlugin } from "gsap/TextPlugin";
 
 import mapboxgl from "mapbox-gl";
-import Blinky from "@/components/blinking-cursor";
+
+import Terminal from "@/components/terminal.vue";
 
 export default {
   name: "HeaderMap",
 
   components: {
-    Blinky,
+    Terminal,
   },
 
   setup() {
@@ -41,10 +38,12 @@ export default {
     const content = ref(null);
     const contentLhs = ref(null);
     const contentRhs = ref(null);
-    const animatedTxt = ref(null);
+    const terminalEnabled = ref(false);
 
-    const animateMap = false;
     const mapBox = ref(null);
+    const debug = ref(true);
+
+    const theme = inject("theme");
 
     const addMapMarker = () => {
       const el = document.createElement("div");
@@ -59,7 +58,10 @@ export default {
 
       mapBox.value = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/dark-v10",
+        style:
+          theme.value === "dark"
+            ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk"
+            : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r",
         zoom: 1.5,
         center: [30, 50],
         projection: "globe",
@@ -89,6 +91,7 @@ export default {
 
     const contentAnimate = () => {
       const tl = gsap.timeline();
+
       tl.to(map.value, { opacity: 1, duration: 2, delay: 0.2, ease: "Power2.easeOut" });
       tl.to(content.value, {
         opacity: 1,
@@ -96,6 +99,14 @@ export default {
         delay: 1,
         ease: "Power2.easeOut",
       });
+
+      tl.call(
+        () => {
+          terminalEnabled.value = true;
+        },
+        null,
+        3
+      );
 
       tl.from(
         contentLhs.value,
@@ -119,42 +130,17 @@ export default {
         3
       );
 
-      tl.to(animatedTxt.value, {
-        delay: 0,
-        duration: 4,
-        text: { value: "I develop for the web", delimiter: "" },
-        ease: "none",
-      });
-
-      tl.to(animatedTxt.value, {
-        delay: 3,
-        duration: 1,
-        text: { value: "", delimiter: " " },
-        ease: "none",
-      });
-
-      tl.to(animatedTxt.value, {
-        delay: 1,
-        duration: 3,
-        text: { value: " I know how to hack the mainframe", delimiter: "" },
-        type: "diff",
-        ease: "none",
-      });
-
       tl.play();
     };
 
     onMounted(() => {
-      gsap.registerPlugin(TextPlugin);
-
       setTimeout(() => {
-        if (animateMap) {
+        if (debug.value === false) {
           mapAnimate();
-          contentAnimate();
         }
-      }, 2000);
 
-      // gsap.to(content.value, { opacity: 1, duration: 4 });
+        contentAnimate();
+      }, 2000);
     });
 
     return {
@@ -163,7 +149,7 @@ export default {
       content,
       contentLhs,
       contentRhs,
-      animatedTxt,
+      terminalEnabled,
     };
   },
 };
@@ -206,13 +192,11 @@ export default {
   display: grid;
   column-gap: 4vw;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 4fr;
 
   .content-lhs {
     text-align: right;
     justify-self: end;
-
-
   }
   .content-rhs {
     justify-self: start;
