@@ -14,8 +14,14 @@ export default {
   name: "component-scroll-animation",
 
   props: {
-    from: { type: Object, required: true },
-    to: { type: Object, required: true },
+    from: {
+      type: Object,
+      required: true,
+    },
+    to: {
+      type: Object,
+      required: true,
+    },
   },
 
   setup(props) {
@@ -26,7 +32,7 @@ export default {
 
     onMounted(() => {
       gsap.fromTo(
-        el.value,
+        props.to.stagger > 0 ? el.value.children : el.value,
         {
           ...props.from,
         },

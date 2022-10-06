@@ -1,11 +1,9 @@
 <template>
-  <section>
-    <div class="container">
-      <div class="row">
-        <slot></slot>
-      </div>
+  <div class="container">
+    <div class="row">
+      <slot></slot>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -15,15 +13,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-section {
-  background: rgb(var(--neutral-50));
-  .container {
-    margin: auto;
-    max-width: 1200px;
+.container {
+  margin: auto;
+  max-width: 1200px;
 
-    .row {
-      margin: auto 3rem;
-    }
+  .row {
+    margin: auto 3rem;
   }
 }
 </style>

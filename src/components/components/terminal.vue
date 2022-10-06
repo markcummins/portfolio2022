@@ -44,7 +44,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import Blinky from "@/components/blinking-cursor";
+import Blinky from "@/components/components/blinking-cursor";
 
 import IconClose from "@carbon/icons-vue/es/close--filled/16";
 
@@ -113,8 +113,8 @@ export default {
 
 <style scoped lang="scss">
 .shell {
-  color: rgb(var(--neutral-900));
-  background-color: #23252e;
+  color: rgb(var(--foreground));
+  background-color: rgba(var(--foreground), .05);
   padding: 1rem 1.5rem;
   border-radius: 3px;
   text-align: left;
@@ -124,6 +124,7 @@ export default {
     font-size: 0.8rem;
     margin: 0 auto 0.8rem auto;
     font-family: var(--font-mono);
+    color: rgb(var(--foreground));
   }
 
   .shell-content {
@@ -143,9 +144,9 @@ export default {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    opacity: 0.4;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out, scale 0.2s ease-in-out;
+    color: rgb(var(--foreground));
 
     &:hover {
       opacity: 0.8;

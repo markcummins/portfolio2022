@@ -6,7 +6,12 @@
         <img class="profile-picture" alt="Picture of Me" src="~@/assets/me.jpg" />
       </div>
       <div class="content-rhs" ref="contentRhs">
-        <p class="font-mono text-primary">Hi, my name is</p>
+        <p
+          class="font-mono text-primary font-labelle"
+          style="font-size: 1.6rem; line-height: 0.8rem"
+        >
+          Hello, my name is
+        </p>
         <h1 class="text-primary">Mark Cummins.</h1>
         <h2>I build things for the web.</h2>
         <br />
@@ -23,7 +28,7 @@ import { gsap } from "gsap";
 
 import mapboxgl from "mapbox-gl";
 
-import Terminal from "@/components/terminal.vue";
+import Terminal from "@/components/components/terminal.vue";
 
 export default {
   name: "HeaderMap",
@@ -112,7 +117,8 @@ export default {
         contentLhs.value,
         {
           opacity: 0,
-          x: 100,
+          x: 80,
+          delay: 0.6,
           duration: 2,
           ease: "Power2.easeOut",
         },
@@ -123,7 +129,7 @@ export default {
         contentRhs.value,
         {
           opacity: 0,
-          x: -100,
+          x: -80,
           duration: 2,
           ease: "Power2.easeOut",
         },
@@ -171,7 +177,7 @@ export default {
   z-index: 10;
   height: 100vh;
   position: relative;
-  background: rgb(var(--neutral-50));
+  background: rgb(var(--background));
 }
 #map {
   opacity: 0;
@@ -186,7 +192,7 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: rgba(var(--neutral-50), 0.85);
+  background: rgba(var(--background), 0.85);
 
   opacity: 1;
   display: grid;

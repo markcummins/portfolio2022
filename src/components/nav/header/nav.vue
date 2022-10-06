@@ -1,13 +1,13 @@
 <template>
-  <div class="rats">
+  <div>
     <div><NavTop /></div>
     <div><NavTopMobile /></div>
   </div>
 </template>
 
 <script>
-import NavTop from "@/components/nav-top/desktop.vue";
-import NavTopMobile from "@/components/nav-top/mobile.vue";
+import NavTop from "@/components/nav/header/desktop.vue";
+import NavTopMobile from "@/components/nav/header/mobile.vue";
 
 export default {
   name: "nav-top",

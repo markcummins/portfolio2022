@@ -15,41 +15,23 @@ export default {
 
     const themes = {
       light: {
-        // Neutral
-        "--neutral-50": "250, 250, 250",
-        "--neutral-100": "245, 245, 245",
-        "--neutral-200": "238, 238, 238",
-        "--neutral-300": "224, 224, 224",
-        "--neutral-400": "189, 189, 189",
-        "--neutral-500": "158, 158, 158",
-        "--neutral-600": "117, 117, 117",
-        "--neutral-700": "97, 97, 97",
-        "--neutral-800": "66, 66, 66",
-        "--neutral-900": "33, 33, 33",
+        "--background": "250, 250, 250",
+        "--foreground": "55, 55, 55",
         // Primary
-        "--primary-50": "241, 248, 252",
-        "--primary-100": "220, 238, 248",
-        "--primary-200": "197, 227, 244",
-        "--primary-300": "173, 215, 239",
-        "--primary-400": "156, 207, 235",
-        "--primary-500": "138, 198, 232",
-        "--primary-600": "130, 192, 229",
-        "--primary-700": "119, 185, 226",
-        "--primary-800": "109, 177, 222",
-        "--primary-900": "90, 164, 216",
+        "--primary-50": "241, 240, 250",
+        "--primary-100": "220, 217, 243",
+        "--primary-200": "197, 192, 235",
+        "--primary-300": "174, 167, 227",
+        "--primary-400": "156, 148, 221",
+        "--primary-500": "139, 129, 215",
+        "--primary-600": "131, 121, 211",
+        "--primary-700": "120, 110, 205",
+        "--primary-800": "110, 100, 199",
+        "--primary-900": "91, 81, 190",
       },
       dark: {
-        // Neutral
-        "--neutral-50": "33, 33, 33",
-        "--neutral-100": "66, 66, 66",
-        "--neutral-200": "97, 97, 97",
-        "--neutral-300": "158, 158, 158",
-        "--neutral-400": "189, 189, 189",
-        "--neutral-500": "224, 224, 224",
-        "--neutral-600": "117, 117, 117",
-        "--neutral-700": "238, 238, 238",
-        "--neutral-800": "245, 245, 245",
-        "--neutral-900": "250, 250, 250",
+        "--background": "11, 11, 11",
+        "--foreground": "250, 250, 250",
         // Primary
         "--primary-50": "241, 248, 252",
         "--primary-100": "220, 238, 248",
@@ -81,6 +63,7 @@ export default {
   --font-sans: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system,
     system-ui, sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  --font-labelle: "La Belle Aurore", "cursive";
 }
 
 * {
@@ -90,7 +73,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
 }
 
 @media (max-width: 480px) {
@@ -101,7 +84,7 @@ body {
 
 #app-shell {
   font-family: var(--font-sans);
-  color: rgb(var(--neutral-500));
+  color: rgb(var(--foreground));
 }
 
 #app {
@@ -130,6 +113,17 @@ body {
 
   .font-mono {
     font-family: var(--font-mono);
+  }
+
+  .font-labelle {
+    font-family: var(--font-labelle);
+  }
+
+  .text-background {
+    color: rgb(var(--background));
+  }
+  .text-foreground {
+    color: rgb(var(--foreground));
   }
 
   .text-primary-50 {
@@ -162,6 +156,35 @@ body {
   }
   .text-primary-900 {
     color: rgb(var(--primary-900));
+  }
+
+  a.btn {
+    line-height: 1;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-mono);
+    color: rgb(var(--foreground));
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    border: 1px solid rgb(var(--foreground));
+  }
+  a.btn:hover {
+    outline: none;
+    color: rgb(var(--background));
+    background-color: rgb(var(--foreground));
+  }
+
+  a.btn-primary {
+    color: rgb(var(--primary-500));
+    border: 1px solid rgb(var(--primary-500));
+  }
+  a.btn-primary:hover {
+    color: rgb(var(--background));
+    background-color: rgb(var(--primary-500));
   }
 }
 </style>

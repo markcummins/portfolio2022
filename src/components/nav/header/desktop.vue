@@ -2,14 +2,18 @@
   <div id="nav-top-desktop" :class="{ 'nav-hidden': scrollDirection === 'down' }">
     <div>
       <div>
-        <span>1. About</span>
-        <span>1. Projects</span>
-        <span>3. Hello</span>
-        <span>4. Contact</span>
+        <span>1. Technologies</span>
+        <span>2. Work</span>
+        <span>3. Projects</span>
+        <span>4. Get In Touch</span>
       </div>
       <Transition name="fade">
-        <IconDark v-if="theme === 'dark'" @click="switchTheme()" />
-        <IconLight v-else-if="theme === 'light'" @click="switchTheme()" />
+        <IconDark class="icon-theme" v-if="theme === 'dark'" @click="switchTheme()" />
+        <IconLight
+          class="icon-theme"
+          v-else-if="theme === 'light'"
+          @click="switchTheme()"
+        />
       </Transition>
     </div>
   </div>
@@ -67,7 +71,7 @@ export default {
 #nav-top-desktop {
   &.nav-hidden > div {
     transform: translateY(-100%);
-    box-shadow: 0 0 0 0 rgb(var(--neutral-50));
+    box-shadow: 0 0 0 0 rgb(var(--background));
   }
 
   > div {
@@ -82,13 +86,14 @@ export default {
     transform: translateY(0%);
     justify-content: flex-end;
     backdrop-filter: blur(0.3rem);
-    background: rgba(var(--neutral-100), 0.1);
-    box-shadow: 0 10px 30px -10px rgb(var(--neutral-50));
+    background: rgba(var(--background), 0.1);
+    border-bottom: 1px solid rgba(var(--foreground), 0.2);
     transition: box-shadow 0.15s ease-in-out, transform 0.2s ease-in-out;
 
     > div {
       display: flex;
       margin-right: 2rem;
+
       span {
         height: 32px;
         display: flex;
@@ -101,10 +106,20 @@ export default {
         transition: border 0.15s ease-in-out, padding 0.15s ease-in-out;
         &:hover {
           padding: 0 0.8rem;
-          font-weight: 600;
-          border-bottom: 2px solid rgb(var(--neutral-900));
+          color: rgb(var(--primary-500));
+          border-bottom: 2px solid rgb(var(--primary-500));
         }
       }
+    }
+  }
+
+  .icon-theme {
+    cursor: pointer;
+    transition: scale 0.15s ease-in-out, color 0.15s ease-in-out;
+
+    &:hover {
+      scale: 1.4;
+      color: rgb(var(--primary-500));
     }
   }
 }

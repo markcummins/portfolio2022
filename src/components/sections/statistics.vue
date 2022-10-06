@@ -1,16 +1,7 @@
 <template>
-  <Container>
-    <div class="statistics">
-      <ScrollAnimation
-        :from="{ opacity: 0, y: 100 }"
-        :to="{ opacity: 1, y: 0, delay: 0.3 }"
-      >
-        <div>
-          <h1 style="text-align: center" class="text-primary">
-            <Tag tag="h1"> Languages and Frameworks </Tag>
-          </h1>
-        </div>
-      </ScrollAnimation>
+  <section class="statistics">
+    <Container>
+      <Title prefix="01.">Technologies</Title>
 
       <div class="stat-card stat-card-languages">
         <ScrollAnimation
@@ -57,8 +48,9 @@
               <h3 class="text-primary"><Tag tag="h3"> Frameworks / Platforms </Tag></h3>
               <p>
                 <Tag tag="p">
-                  Over the last nine years, I have had the opportunity to work with many Frameworks and Platforms. 
-                  I have worked a lot with <strong>WordPress</strong> where I have built a lot of custom Plugins 
+                  Over the last nine years, I have had the opportunity to work with many
+                  Frameworks and Platforms. I have worked a lot with
+                  <strong>WordPress</strong> where I have built a lot of custom Plugins
                 </Tag>
               </p>
               <p>
@@ -68,13 +60,14 @@
           </div>
         </ScrollAnimation>
       </div>
-    </div>
-  </Container>
+    </Container>
+  </section>
 </template>
 
 <script>
 import Tag from "@/components/layout/tag.vue";
-import Radar from "@/components/statistics/radar.vue";
+import Title from "@/components/layout/title.vue";
+import Radar from "@/components/components/radar.vue";
 import Container from "@/components/layout/container.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 
@@ -83,6 +76,7 @@ export default {
   components: {
     Tag,
     Radar,
+    Title,
     Container,
     ScrollAnimation,
   },
@@ -98,7 +92,6 @@ export default {
         "ElasticSearch",
         // Languages
         "Python",
-        "Shell",
         "ASP.Net/VB.Net",
         "Javascript",
         "PHP",
@@ -107,9 +100,9 @@ export default {
         "Java",
       ],
       datasets: [
-        { color: "0,255,  0", data: [45, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
-        { color: "255, 0, 0", data: [0, 0, 45, 10, 0, 0, 0, 0, 0, 0, 0, 0] },
-        { color: "138, 198, 232", data: [0, 0, 0, 0, 15, 25, 15, 45, 45, 15, 15, 15] },
+        { color: "138, 198, 232", data: [45, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        { color: "140, 232, 138", data: [0, 0, 45, 10, 0, 0, 0, 0, 0, 0, 0] },
+        { color: "232, 138, 142", data: [0, 0, 0, 0, 15, 15, 45, 45, 15, 15, 15] },
       ],
     };
 
@@ -117,22 +110,29 @@ export default {
       labels: [
         // Scripts
         "WordPress",
-        "Gatsby",
         "Codeigniter",
+        "Gatsby",
+        // SysAdmin
+        "Shell",
         "Docker",
         // Languages
-        "React",
         "Vue",
+        "React",
         "Flutter",
         // Languages
-        "BootStrap",
         "TailWind",
+        "BootStrap",
         "Foundation",
+        // Testing
+        "Cypress",
+        "PHPUnit",
       ],
       datasets: [
-        { color: "138, 198, 232", data: [15, 15, 15, 0, 0, 0, 0, 0, 0, 0] },
-        { color: "255, 0, 0", data: [0, 0, 0, 25, 25, 25, 0, 0, 0, 0] },
-        { color: "0,255,  0", data: [0, 0, 0, 0, 0, 0, 0, 25, 25, 25] },
+        { color: "138, 198, 232", data: [45, 15, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        { color: "232, 138, 142", data: [0, 0, 0, 25, 25, 0, 0, 0, 0, 0, 0, 0, 0] },
+        { color: "140, 232, 138", data: [0, 0, 0, 0, 0, 45, 20, 25, 0, 0, 0, 0, 0] },
+        { color: "232, 189, 138", data: [0, 0, 0, 0, 0, 0, 0, 0, 25, 45, 25, 0, 0] },
+        { color: "182, 138, 232", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 25] },
       ],
     };
 
@@ -145,8 +145,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.statistics {
-  background: rgb(var(--neutral-50));
+section.statistics {
+  background: rgb(var(--background));
   padding: 1rem 0;
 
   .stat-card {
@@ -155,10 +155,10 @@ export default {
     grid-template-columns: 12fr 12fr;
 
     div.stat-card-content {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
     }
   }
 
