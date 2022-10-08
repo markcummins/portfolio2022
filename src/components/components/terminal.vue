@@ -114,7 +114,7 @@ export default {
 <style scoped lang="scss">
 .shell {
   color: rgb(var(--foreground));
-  background-color: rgba(var(--foreground), .05);
+  background-color: rgba(var(--background), .85);
   padding: 1rem 1.5rem;
   border-radius: 3px;
   text-align: left;

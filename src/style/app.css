@@ -9,8 +9,14 @@
   --font-labelle: "La Belle Aurore", "cursive";
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body.theme-light {
-  --background: 250, 250, 250;
+  --background: 250, 250, 252;
+  --background-tint: 243, 243, 247;
+
   --foreground: 55, 55, 55;
   /* Primary */
   --primary-50: 234, 234, 239;
@@ -26,7 +32,9 @@ body.theme-light {
 }
 
 body.theme-dark {
-  --background: 22, 22, 22;
+  --background: 14, 20, 29;
+  --background-tint: 18, 28, 40;
+
   --foreground: 250, 250, 250;
   /* Primary */
   --primary-50: 241, 248, 252;

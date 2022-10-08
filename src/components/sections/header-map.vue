@@ -54,13 +54,6 @@ export default {
 
     const theme = inject("theme");
 
-    const addMapMarker = () => {
-      const el = document.createElement("div");
-      el.className = "marker";
-
-      new mapboxgl.Marker(el).setLngLat([-7.90983, 52.91427]).addTo(mapBox.value);
-    };
-
     watch(theme, (oldTheme, newTheme) => {
       mapBox.value.setStyle(
         newTheme === "light"
@@ -77,10 +70,7 @@ export default {
 
       mapBox.value = new mapboxgl.Map({
         container: "map",
-        style:
-          theme.value === "dark"
-            ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk"
-            : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r",
+        style: "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk?2",
         zoom: 1.5,
         center: [30, 50],
         projection: "globe",
@@ -88,16 +78,6 @@ export default {
       });
 
       mapBox.value.on("load", () => {
-        mapBox.value.setFog({
-          range: [0.8, 8],
-          color: "#484848",
-          "horizon-blend": 0.5,
-          "high-color": "#191A1A",
-          "space-color": "#2A2A2A",
-          "star-intensity": 0.15,
-        });
-
-        addMapMarker();
         mapBox.value.flyTo({
           center: [-7.90983, 52.91427],
           zoom: 8,
@@ -118,22 +98,14 @@ export default {
         0.8
       );
 
-      tl.to(
-        splash.value,
-        { opacity: 0, duration: 0.4, ease: "Power2.in" },
-        2
-      );
+      tl.to(splash.value, { opacity: 0, duration: 0.4, ease: "Power2.in" }, 2);
 
-      tl.to(
-        map.value,
-        { opacity: 0.4, duration: 1, ease: "Power2.in" },
-        2.4
-      );
+      tl.to(map.value, { opacity: .8, duration: 1, ease: "Power2.in" }, 2.4);
 
       tl.to(
         map.value,
         {
-          opacity: 0.6,
+          opacity: 0.5,
           duration: 2,
           ease: "Power2.easeOut",
         },

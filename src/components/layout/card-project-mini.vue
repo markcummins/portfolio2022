@@ -59,18 +59,13 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  display: flex;
   overflow: hidden;
   border-radius: 0.25rem;
-  display: flex;
   flex-direction: column;
-  background: rgba(var(--foreground), 0.08);
+  background: rgb(var(--background-tint));
 
   .content {
-    // border-width: 0 2px 2px 2px;
-    // border-style: solid;
-    // border-radius: 0 0 .25rem .25rem;
-    // border-color: rgba(var(--primary-500), 0.9);
-
     flex-grow: 1;
     display: flex;
     flex-direction: column;

@@ -53,7 +53,6 @@ h2 {
   background: rgb(var(--background));
   position: relative;
   display: inline-block;
-  border-radius: 50%;
 }
 h2 span {
   margin-right: 1rem;

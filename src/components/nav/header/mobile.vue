@@ -1,18 +1,24 @@
 <template>
-  <div id="nav-top-mobile">
-    <div class="nav-menu-mobile-icon">
+  <div
+    id="nav-top-mobile"
+    :class="{ 'nav-hidden': scrollDirection === 'down', 'nav-active': isOpen }"
+  >
+    <div
+      class="nav-menu-mobile-icon"
+      :class="{ 'icon-open': !isOpen, 'icon-close': isOpen }"
+    >
       <Transition name="slide-down">
-        <IconMenu v-if="isOpen" @click="toggleOpen" />
-        <IconClose v-else-if="!isOpen" @click="toggleOpen" />
+        <IconMenu v-if="!isOpen" @click="toggleOpen" />
+        <IconClose v-else-if="isOpen" @click="toggleOpen" />
       </Transition>
     </div>
-    <div class="nav-menu-mobile-container" :class="{ active: isOpen }">
+    <div class="nav-menu-mobile-container" :class="{}">
       <div class="nav-menu-mobile-menu">
         <div>
-          <div>1. About</div>
-          <div>1. About</div>
-          <div>1. About</div>
-          <div>1. About</div>
+          <div><span>01.</span> <strong>Technologies</strong></div>
+          <div><span>02.</span> <strong>Work</strong></div>
+          <div><span>03.</span> <strong>Projects</strong></div>
+          <div><span>04.</span> <strong>Get In Touch</strong></div>
         </div>
       </div>
     </div>
@@ -20,7 +26,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import IconMenu from "@carbon/icons-vue/es/menu/32";
 import IconClose from "@carbon/icons-vue/es/close/32";
 
@@ -33,13 +39,29 @@ export default {
 
   setup() {
     const isOpen = ref(true);
+
     const toggleOpen = () => {
       isOpen.value = !isOpen.value;
+
+      isOpen.value === true
+        ? (document.body.style.overflow = "hidden")
+        : (document.body.style.overflow = "scroll");
     };
+
+    const currentScroll = ref(0);
+    const scrollDirection = ref("");
+
+    onMounted(() => {
+      window.addEventListener("scroll", () => {
+        scrollDirection.value = currentScroll.value > window.pageYOffset ? "up" : "down";
+        currentScroll.value = window.pageYOffset;
+      });
+    });
 
     return {
       isOpen,
       toggleOpen,
+      scrollDirection,
     };
   },
 };
@@ -57,51 +79,69 @@ export default {
   transform: translateY(-30px);
 }
 
-.nav-menu-mobile-icon {
-  top: 0rem;
-  right: 0rem;
-  z-index: 1020;
-  padding: 1.2rem;
-  cursor: pointer;
-  position: fixed;
-  transform: scale(1.2);
-  transition: transform 0.2s ease-in-out;
-  &:hover {
-    transform: scale(1.6);
-  }
-}
-
-.nav-menu-mobile-container {
+#nav-top-mobile {
   top: 0;
   left: 0;
   right: 0;
-  height: 0;
-  opacity: 0;
-  z-index: 1010;
-  overflow: hidden;
+  z-index: 1020;
   position: fixed;
-  backdrop-filter: blur(0.4rem);
-  transition: opacity 0.5s ease-in-out, height 0.3s ease-in-out;
 
-  &.active {
-    opacity: 1;
-    height: 100vh;
-    .nav-menu-mobile {
-      transform: translateX(0);
+  .nav-menu-mobile-icon {
+    top: 2rem;
+    right: 2rem;
+    z-index: 1040;
+    cursor: pointer;
+    position: absolute;
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &.nav-hidden > .nav-menu-mobile-icon.icon-open {
+    transform: scale(0);
+  }
+
+  .nav-menu-mobile-container {
+    z-index: 1030;
+    opacity: 0;
+    overflow: hidden;
+    backdrop-filter: blur(0.4rem);
+    transition: opacity 0.5s ease-in-out;
+    .nav-menu-mobile-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(var(--background), 0.8);
+
+      div {
+        font-size: 2.4rem;
+        font-family: var(--font-sans);
+        strong {
+          color: rgb(var(--primary-500));
+        }
+        span {
+          font-size: 2rem;
+          font-family: var(--font-mono);
+          font-family: var(--font-mono);
+        }
+      }
     }
   }
 
-  .nav-menu-mobile-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+  &.nav-active {
     bottom: 0;
-    > div {
-      font-size: 3rem;
+    .nav-menu-mobile-container {
+      opacity: 1;
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
 }
