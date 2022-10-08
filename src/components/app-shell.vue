@@ -18,16 +18,16 @@ export default {
         "--background": "250, 250, 250",
         "--foreground": "55, 55, 55",
         // Primary
-        "--primary-50": "241, 240, 250",
-        "--primary-100": "220, 217, 243",
-        "--primary-200": "197, 192, 235",
-        "--primary-300": "174, 167, 227",
-        "--primary-400": "156, 148, 221",
-        "--primary-500": "139, 129, 215",
-        "--primary-600": "131, 121, 211",
-        "--primary-700": "120, 110, 205",
-        "--primary-800": "110, 100, 199",
-        "--primary-900": "91, 81, 190",
+        "--primary-50": "234, 234, 239",
+        "--primary-100": "203, 203, 215",
+        "--primary-200": "168, 168, 188",
+        "--primary-300": "133, 133, 161",
+        "--primary-400": "106, 106, 140",
+        "--primary-500": "80, 80, 120",
+        "--primary-600": "73, 73, 112",
+        "--primary-700": "64, 64, 101",
+        "--primary-800": "55, 55, 91",
+        "--primary-900": "39, 39, 72",
       },
       dark: {
         "--background": "11, 11, 11",
@@ -73,7 +73,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 480px) {
@@ -90,8 +90,9 @@ body {
 #app {
   h1,
   h2,
-  h3 {
-    margin: 8px auto;
+  h3,
+  h4 {
+    margin: 0.2rem auto;
   }
 
   h1 {
@@ -105,6 +106,10 @@ body {
   h3 {
     font-family: var(--font-sans);
     font-size: clamp(1rem, 4vw, 2rem);
+  }
+  h4 {
+    font-family: var(--font-sans);
+    font-size: clamp(0.8rem, 4vw, 1.6rem);
   }
 
   .font-sans {
@@ -186,5 +191,29 @@ body {
     color: rgb(var(--background));
     background-color: rgb(var(--primary-500));
   }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .img-fluid {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .rounded {
+    border-radius: 0.25rem;
+  }
+
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  // .box-shadow {
+  //   box-shadow: 0 0 0 1px rgba(53, 72, 91, 14%), 0 2px 2px rgba(var(--foreground), 3%),
+  //     0 4px 4px rgba(var(--foreground), 4%), 0 10px 8px rgba(var(--foreground), 5%),
+  //     0 15px 15px rgba(var(--foreground), 6%), 0 30px 30px rgba(var(--foreground), 7%),
+  //     0 70px 65px rgba(var(--foreground), 9%);
+  // }
 }
 </style>

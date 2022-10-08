@@ -26,10 +26,10 @@ export default {
   color: rgb(var(--foreground));
 
   .card-title {
+    color: rgb(var(--primary-500));
     padding: 0.2rem 0.2rem 0.2rem 0.2rem;
   }
   .card-subtitle {
-    color: rgb(var(--primary-500));
     font-family: var(--font-mono);
     font-weight: 600;
     font-size: 1.05rem;

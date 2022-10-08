@@ -27,6 +27,7 @@
 import Title from "@/components/layout/title.vue";
 import Container from "@/components/layout/container.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
+
 export default {
   name: "component-contact",
   components: {

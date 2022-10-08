@@ -96,8 +96,8 @@
 </template>
 
 <script>
-import Card from "@/components/layout/card.vue";
 import Title from "@/components/layout/title.vue";
+import Card from "@/components/layout/card-work.vue";
 import Container from "@/components/layout/container.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 

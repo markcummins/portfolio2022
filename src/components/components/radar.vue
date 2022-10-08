@@ -4,7 +4,7 @@
 
 <script>
 import Chart from "chart.js/auto";
-import { ref, onMounted } from "vue";
+import { inject, watch, ref, onMounted } from "vue";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,71 +27,87 @@ export default {
     var radarChart = null;
     const canvas = ref(null);
 
+    const theme = inject("theme");
+
+    watch(theme, () => {
+      const config = getConfig();
+      radarChart.options = config.options;
+      setChartData();
+
+      radarChart.update();
+    });
+
     gsap.registerPlugin(ScrollTrigger);
 
-    const chartColors = {
-      // primary: "138, 198, 232",
-      primary: "255, 255, 255",
+    const getColors = () => {
+      return {
+        primary: theme.value === "dark" ? "138, 198, 232" : "80, 80, 120",
+      };
     };
 
-    const config = {
-      type: "radar",
-      data: {
-        labels: props.labels,
-        datasets: [],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: false,
-            text: "...",
-            fontColor: "white",
-          },
-          legend: {
-            display: false,
-          },
+    const getConfig = () => {
+      const chartColors = getColors();
+
+      return {
+        type: "radar",
+        data: {
+          labels: props.labels,
+          datasets: [],
         },
-        scales: {
-          r: {
-            pointLabels: {
-              color: `rgba(${chartColors.primary}, .8)`,
-              font: {
-                size: 16,
-                weight: "bold",
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: false,
+              text: "...",
+              fontColor: "white",
+            },
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            r: {
+              pointLabels: {
+                color: `rgba(${chartColors.primary}, .8)`,
+                font: {
+                  size: 15,
+                  family: "'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace",
+                  weight: "normal",
+                },
+              },
+              angleLines: {
+                color: `rgba(${chartColors.primary}, .5)`,
+                display: true,
+              },
+              ticks: {
+                color: `rgba(${chartColors.primary}, .5)`,
+                showLabelBackdrop: false,
+                stepSize: 12,
+              },
+              suggestedMin: 0,
+              suggestedMax: 50,
+              grid: {
+                color: `rgba(${chartColors.primary}, .2)`,
               },
             },
-            angleLines: {
-              color: `rgba(${chartColors.primary}, .5)`,
-              display: true,
-            },
-            ticks: {
-              color: `rgba(${chartColors.primary}, .5)`,
-              showLabelBackdrop: false,
-              stepSize: 12,
-            },
-            suggestedMin: 0,
-            suggestedMax: 50,
-            grid: {
-              color: `rgba(${chartColors.primary}, .2)`,
+          },
+          animation: {
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === "data" && context.mode === "default") {
+                delay = context.dataIndex * 150 + context.datasetIndex * 50;
+              }
+              return delay;
             },
           },
         },
-        animation: {
-          delay: (context) => {
-            let delay = 0;
-            if (context.type === "data" && context.mode === "default") {
-              delay = context.dataIndex * 300 + context.datasetIndex * 100;
-            }
-            return delay;
-          },
-        },
-      },
-      plugins: [],
+        plugins: [],
+      };
     };
 
     onMounted(() => {
-      radarChart = new Chart(canvas.value, config);
+      radarChart = new Chart(canvas.value, getConfig());
 
       ScrollTrigger.create({
         id: "destroy",
@@ -100,6 +116,7 @@ export default {
         start: "top bottom",
         onLeaveBack: () => {
           resetChartData();
+          radarChart.update();
         },
       });
 
@@ -110,14 +127,18 @@ export default {
         start: "top 80%",
         onEnter: () => {
           setChartData();
+          radarChart.update();
         },
       });
     });
 
     const setChartData = () => {
-      console.log("setChartData");
       radarChart.data.datasets = [];
-      props.datasets.forEach(({ color, data }) => {
+
+      props.datasets.forEach(({ data }) => {
+        const chartColors = getColors();
+        const color = chartColors.primary;
+
         radarChart.data.datasets.push({
           label: "",
           data: data,
@@ -130,13 +151,14 @@ export default {
           pointHoverBorderColor: `rgb(${color})`,
         });
       });
-      radarChart.update();
     };
 
     const resetChartData = () => {
-      console.log("resetChartData");
       radarChart.data.datasets = [];
-      props.datasets.forEach(({ color, data }) => {
+      props.datasets.forEach(({ data }) => {
+        const chartColors = getColors();
+        const color = chartColors.primary;
+
         const emptySet = [];
         data.forEach(() => {
           emptySet.push(0);
@@ -154,7 +176,6 @@ export default {
           pointHoverBorderColor: `rgb(${color})`,
         });
       });
-      radarChart.update();
     };
 
     return { canvas };

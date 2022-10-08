@@ -39,7 +39,7 @@ export default {
   width: 8px;
   display: block;
   height: 16px;
-  background-color: #fff;
+  background-color: rgb(var(--foreground));
   transition: background-color 0.05s;
 }
 .blinking-cursor.active {

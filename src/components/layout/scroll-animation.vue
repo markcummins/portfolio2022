@@ -40,7 +40,7 @@ export default {
           scrollTrigger: {
             trigger: el.value,
             start: "top 80%",
-            toggleActions: "play null reset reverse",
+            toggleActions: "play null null reverse",
           },
           ...props.to,
         }
