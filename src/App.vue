@@ -1,5 +1,5 @@
 <template>
-  <AppShell>
+  <div>
     <NavTop />
     <HeaderMap />
     <Statistics />
@@ -7,12 +7,11 @@
     <Projects />
     <Contact />
     <Footer />
-  </AppShell>
+  </div>
 </template>
 
 <script>
-import { ref, provide } from "vue";
-import AppShell from "./components/app-shell.vue";
+import { ref, provide, onMounted } from "vue";
 import NavTop from "./components/nav/header/nav.vue";
 import Footer from "./components/nav/footer/nav.vue";
 
@@ -29,17 +28,27 @@ export default {
     Footer,
     NavTop,
     Contact,
-    AppShell,
     Projects,
     HeaderMap,
     Statistics,
   },
   setup() {
     const theme = ref("dark");
+    const themePrefix = "theme";
 
     provide("theme", theme);
     provide("switchTheme", () => {
+      const currentTheme = theme.value;
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+      document.body.classList.remove(`${themePrefix}-${currentTheme}`);
+      document.body.classList.add(`${themePrefix}-${newTheme}`);
+
       theme.value = theme.value === "dark" ? "light" : "dark";
+    });
+
+    onMounted(() => {
+      document.body.classList.add(`${themePrefix}-${theme.value}`);
     });
 
     return {
@@ -48,3 +57,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "~@/style/mapbox-gl.css";
+@import "~@/style/fonts.css";
+@import "~@/style/keyframes.css";
+@import "~@/style/app.css";
+
+</style>

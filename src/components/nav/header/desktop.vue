@@ -7,14 +7,7 @@
         <span>3. Projects</span>
         <span>4. Get In Touch</span>
       </div>
-      <Transition name="fade">
-        <IconDark class="icon-theme" v-if="theme === 'dark'" @click="switchTheme()" />
-        <IconLight
-          class="icon-theme"
-          v-else-if="theme === 'light'"
-          @click="switchTheme()"
-        />
-      </Transition>
+      <IconLight class="icon-theme" @click="switchTheme()" />
     </div>
   </div>
 </template>
@@ -23,13 +16,11 @@
 import { inject, ref, onMounted } from "vue";
 
 import IconLight from "@carbon/icons-vue/es/asleep/32";
-import IconDark from "@carbon/icons-vue/es/asleep--filled/32";
 
 export default {
   name: "nav-desktop",
 
   components: {
-    IconDark,
     IconLight,
   },
 
@@ -58,16 +49,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.fade-enter-active {
-  transition: all 0.25s ease-out;
-}
-.fade-enter-from {
-  opacity: 0;
-}
-.fade-leave-to {
-  display: none;
-}
-
 #nav-top-desktop {
   &.nav-hidden > div {
     transform: translateY(-100%);
