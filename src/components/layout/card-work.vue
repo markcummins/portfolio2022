@@ -32,7 +32,6 @@ export default {
   .card-subtitle {
     font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 1.05rem;
   }
 
   ::v-deep .card-content {

@@ -3,7 +3,7 @@
     <Container>
       <div class="footer-content">
         <div>
-          <p>Site Designed and Built By Mark Cummins | 2022</p>
+          <p><small>Site Designed and Built By Mark Cummins | 2022</small></p>
         </div>
         <div class="flag">
           <div>
@@ -36,13 +36,12 @@ section.footer {
   .footer-content {
     padding: 0 0 0 0;
     text-align: center;
-    font-size: 0.85rem;
     font-family: var(--font-mono);
     color: rgb(var(--primary-500));
 
     p {
       margin: 0;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
     }
 
     .flag {

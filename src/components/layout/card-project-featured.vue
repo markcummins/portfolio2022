@@ -6,6 +6,11 @@
     >
       <div class="card">
         <div class="card-body">
+          <div class="card-img">
+            <!-- <img v-if="theme === 'light'" src="@/assets/light/bam.png" /> -->
+            <!-- <img v-if="theme === 'light'" src="@/assets/dark/bam.png" /> -->
+            <img src="@/assets/dark/educate-magis.jpg" />
+          </div>
           <div class="card-content">
             <div class="card-title">
               <h4>Educate Magis</h4>
@@ -32,11 +37,6 @@
               React | Styled Components | Express | Spotify API | Heroku | Express |
               Spotify API | Heroku
             </p>
-          </div>
-          <div class="card-img">
-            <!-- <img v-if="theme === 'light'" src="@/assets/light/bam.png" /> -->
-            <!-- <img v-if="theme === 'light'" src="@/assets/dark/bam.png" /> -->
-            <img src="@/assets/dark/educate-magis.jpg" />
           </div>
         </div>
         <div class="card-footer">
@@ -112,75 +112,89 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
-  .card {
-    margin-bottom: 3rem;
+.card {
+  margin-bottom: 3rem;
 
-    .card-body {
-      display: grid;
-      column-gap: 8rem;
-      align-items: center;
-      grid-template-columns: 8fr 6fr;
+  .card-body {
+    display: grid;
+    row-gap: 3rem;
+    align-items: center;
+    grid-template-columns: 1fr;
 
-      .card-title h4 {
-        margin: 0 0 1rem 0;
-        color: rgb(var(--primary-500));
-      }
+    .card-title h4 {
+      margin: 0 0 1rem 0;
+      color: rgb(var(--primary-500));
+    }
 
+    .card-img {
+      text-align: center;
       img {
+        width: 480px;
         max-width: 100%;
-        border-radius: 1rem;
-        display: block;
-        margin: 0 0 0 auto;
-      }
-
-      p {
-        margin-top: 0;
-        margin-bottom: 0.8rem;
-      }
-
-      .card-description {
-        z-index: 20;
-        position: relative;
-        background: rgba(var(--background), 0.95);
-      }
-
-      .card-tags {
-        padding: 1rem 0;
-        font-size: 0.85rem;
-        font-family: var(--font-mono);
-        color: rgb(var(--primary-500));
-        // border-top: 2px solid rgba(var(--primary-500), 0.2);
+        border-radius: 0.8rem;
       }
     }
-    .card-footer {
-      display: flex;
-      padding: 1rem 0 0 0;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 2px solid rgba(var(--primary-500), 0.2);
 
-      .card-icons {
-        display: inline-block;
-        color: rgb(var(--primary-500));
-        > span {
-          margin-right: 1rem;
-        }
+    p {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-description {
+      z-index: 20;
+      position: relative;
+      background: rgba(var(--background), 0.95);
+    }
+
+    .card-tags {
+      padding: 1rem 0;
+      font-family: var(--font-mono);
+      color: rgb(var(--primary-500));
+    }
+  }
+  .card-footer {
+    display: flex;
+    padding: 1rem 0 0 0;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px solid rgba(var(--primary-500), 0.2);
+
+    .card-icons {
+      display: inline-block;
+      color: rgb(var(--primary-500));
+      > span {
+        margin-right: 1rem;
       }
-      .more-toggle {
-        display: flex;
-        justify-content: flex-end;
+    }
+    .more-toggle {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    .card-body {
+      row-gap: unset;
+      column-gap: 6rem;
+      grid-template-columns: 8fr 6fr;
+      > div:nth-child(1) {
+        order: 2;
+      }
+      > div:nth-child(2) {
+        order: 1;
       }
     }
   }
+}
 
-  .more {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    img {
-      width: 600px;
-    }
+.more {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  img {
+    width: 600px;
   }
 }
 </style>

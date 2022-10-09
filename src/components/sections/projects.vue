@@ -38,9 +38,15 @@ section.projects {
 
   .mini-card-group {
     display: grid;
-    row-gap: 4rem;
-    column-gap: 4vw;
-    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .mini-card-group {
+      column-gap: 2rem;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 </style>

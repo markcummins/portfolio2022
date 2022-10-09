@@ -2,9 +2,9 @@
   <ScrollAnimation :from="{ opacity: 0, y: 100 }" :to="{ opacity: 1, y: 0, delay: 0.3 }">
     <div class="title">
       <h2 style="text-align: center" class="text-primary">
-        <span class="font-mono text-foreground" style="font-size: 2rem">{{
-          prefix
-        }}</span>
+        <span class="font-mono text-foreground">
+          {{ prefix }}
+        </span>
         <slot />
       </h2>
     </div>
@@ -44,7 +44,7 @@ export default {
   content: "";
   z-index: 10;
   position: absolute;
-  border-bottom: 2px solid rgba(var(--primary-500), .2);
+  border-bottom: 2px solid rgba(var(--primary-500), 0.2);
 }
 
 h2 {

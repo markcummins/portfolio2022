@@ -15,10 +15,30 @@
     <div class="nav-menu-mobile-container" :class="{}">
       <div class="nav-menu-mobile-menu">
         <div>
-          <div><span>01.</span> <strong>Technologies</strong></div>
-          <div><span>02.</span> <strong>Work</strong></div>
-          <div><span>03.</span> <strong>Projects</strong></div>
-          <div><span>04.</span> <strong>Get In Touch</strong></div>
+          <div>
+            <h2>
+              <span>01.</span>
+              <strong>Technologies</strong>
+            </h2>
+          </div>
+          <div>
+            <h2>
+              <span>02.</span>
+              <strong>Work</strong>
+            </h2>
+          </div>
+          <div>
+            <h2>
+              <span>03.</span>
+              <strong>Projects</strong>
+            </h2>
+          </div>
+          <div>
+            <h2>
+              <span>04.</span>
+              <strong>Get In Touch</strong>
+            </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -38,7 +58,7 @@ export default {
   },
 
   setup() {
-    const isOpen = ref(true);
+    const isOpen = ref(false);
 
     const toggleOpen = () => {
       isOpen.value = !isOpen.value;
@@ -118,15 +138,13 @@ export default {
       background: rgba(var(--background), 0.8);
 
       div {
-        font-size: 2.4rem;
         font-family: var(--font-sans);
+        span {
+          margin-right: 0.8rem;
+          font-family: var(--font-mono);
+        }
         strong {
           color: rgb(var(--primary-500));
-        }
-        span {
-          font-size: 2rem;
-          font-family: var(--font-mono);
-          font-family: var(--font-mono);
         }
       }
     }

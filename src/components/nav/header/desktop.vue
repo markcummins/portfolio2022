@@ -6,11 +6,11 @@
         <img v-if="theme === 'light'" src="@/assets/light/logo.svg" />
       </div>
       <div>
-        <div>
-          <span>1. Technologies</span>
-          <span>2. Work</span>
-          <span>3. Projects</span>
-          <span>4. Get In Touch</span>
+        <div class="font-mono">
+          <span><small>01. Technologies</small></span>
+          <span><small>02. Work</small></span>
+          <span><small>03. Projects</small></span>
+          <span><small>04. Get In Touch</small></span>
         </div>
         <IconLight class="icon-theme" @click="switchTheme()" />
       </div>
@@ -58,7 +58,6 @@ export default {
 #nav-top-desktop {
   &.nav-hidden > div {
     transform: translateY(-100%);
-    box-shadow: 0 0 0 0 rgb(var(--background));
   }
 
   > div {
@@ -68,14 +67,13 @@ export default {
     z-index: 999;
     display: flex;
     position: fixed;
-    font-size: 1rem;
     padding: 1rem 2rem;
     transform: translateY(0%);
     justify-content: space-between;
     backdrop-filter: blur(0.3rem);
     background: rgba(var(--background), 0.1);
-    border-bottom: 1px solid rgba(var(--foreground), 0.2);
-    transition: box-shadow 0.15s ease-in-out, transform 0.2s ease-in-out;
+    border-bottom: 1px solid rgba(var(--primary-500), 0.5);
+    transition: transform 0.2s ease-in-out;
 
     > div {
       display: flex;
@@ -94,16 +92,16 @@ export default {
           height: 32px;
           display: flex;
           cursor: pointer;
-          align-items: center;
           margin: 0 0.6rem;
+          align-items: center;
           text-transform: uppercase;
-          border-top: 2px solid transparent;
-          border-bottom: 2px solid transparent;
-          transition: border 0.15s ease-in-out, padding 0.15s ease-in-out;
+          transition: color 0.15s ease-in-out, scale 0.15s ease-in-out,
+            padding 0.15s ease-in-out;
+
           &:hover {
-            padding: 0 0.8rem;
+            scale: 1.1;
+            padding: 0 .3rem;
             color: rgb(var(--primary-500));
-            border-bottom: 2px solid rgb(var(--primary-500));
           }
         }
       }
@@ -115,7 +113,7 @@ export default {
     transition: scale 0.15s ease-in-out, color 0.15s ease-in-out;
 
     &:hover {
-      scale: 1.4;
+      scale: 1.3;
       color: rgb(var(--primary-500));
     }
   }

@@ -81,7 +81,6 @@ export default {
 
     .card-tags {
       margin: 0;
-      font-size: 0.85rem;
       padding: 1rem 0;
       font-family: var(--font-mono);
       color: rgb(var(--primary-500));
@@ -99,59 +98,4 @@ export default {
     }
   }
 }
-// #app .card {
-//   display: grid;
-//   column-gap: 8rem;
-//   align-items: center;
-//   // margin-bottom: 5rem;
-//   grid-template-columns: 8fr 6fr;
-
-//   h4.title {
-//     margin: 2rem 0 1rem;
-//     color: rgb(var(--primary-500));
-//   }
-
-//   img {
-//     max-width: 100%;
-//     border-radius: 1rem;
-//     display: block;
-//     margin: 0 0 0 auto;
-//   }
-
-//   p {
-//     margin-top: 0;
-//     margin-bottom: 0.8rem;
-//   }
-
-//   .card-icons {
-//     display: flex;
-//     color: rgb(var(--primary-500));
-//     > span {
-//       margin-right: 1rem;
-//     }
-//   }
-
-//   .card-description {
-//     z-index: 20;
-//     position: relative;
-//     background: rgba(var(--background), 0.95);
-//   }
-
-//   .card-tags {
-//     padding: 1rem 0;
-//     font-size: 0.85rem;
-//     font-family: var(--font-mono);
-//     color: rgb(var(--primary-500));
-//     border-top: 2px solid rgba(var(--primary-500), 0.2);
-//   }
-// }
-
-// .more {
-//   height: 0;
-//   opacity: 0;
-//   overflow: hidden;
-//   img {
-//     width: 600px;
-//   }
-// }
 </style>

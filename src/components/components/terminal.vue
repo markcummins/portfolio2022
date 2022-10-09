@@ -121,7 +121,6 @@ export default {
   position: relative;
 
   p {
-    font-size: 0.8rem;
     margin: 0 auto 0.8rem auto;
     font-family: var(--font-mono);
     color: rgb(var(--foreground));

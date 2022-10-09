@@ -65,8 +65,8 @@
       </ScrollAnimation>
 
       <ScrollAnimation
-        :from="{ opacity: 0, rotationX: -100, transformOrigin: '100% 0%', x: 80 }"
-        :to="{ opacity: 1, rotationX: 0, x: 0, duration: 1 }"
+        :from="{ opacity: 0, x: 80 }"
+        :to="{ opacity: 1, x: 0, duration: 1 }"
       >
         <Card>
           <template v-slot:title>LRC (Localization Research Center) Limerick</template>

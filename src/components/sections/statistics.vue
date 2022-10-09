@@ -8,7 +8,9 @@
           :from="{ opacity: 0, x: 240 }"
           :to="{ opacity: 1, x: 0, delay: 0.3 }"
         >
-          <div><Radar :labels="languages.labels" :datasets="languages.datasets" /></div>
+          <div class="stat-card-chart">
+            <Radar :labels="languages.labels" :datasets="languages.datasets" />
+          </div>
         </ScrollAnimation>
         <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
           <div class="stat-card-content">
@@ -40,7 +42,9 @@
           :from="{ opacity: 0, x: 240 }"
           :to="{ opacity: 1, x: 0, delay: 0.3 }"
         >
-          <div><Radar :labels="frameworks.labels" :datasets="frameworks.datasets" /></div>
+          <div class="stat-card-chart">
+            <Radar :labels="frameworks.labels" :datasets="frameworks.datasets" />
+          </div>
         </ScrollAnimation>
         <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
           <div class="stat-card-content">
@@ -151,26 +155,53 @@ section.statistics {
 
   .stat-card {
     display: grid;
-    column-gap: 3rem;
-    grid-template-columns: 12fr 12fr;
+    row-gap: 1rem;
+    grid-template-columns: 1fr;
 
-    div.stat-card-content {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .stat-card-chart {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .stat-card-chart,
+    .stat-card-content {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .stat-card {
+      row-gap: unset;
+      column-gap: 3rem;
+      grid-template-columns: 1fr 1fr;
+
+      .stat-card-chart {
+        max-width: unset;
+      }
+
+      .stat-card-chart,
+      .stat-card-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .stat-card-frameworks {
+      > div:nth-child(1) {
+        order: 2;
+      }
+      > div:nth-child(2) {
+        order: 1;
+      }
     }
   }
 
   strong {
     color: rgb(var(--primary-500));
-  }
-
-  .stat-card-frameworks > div:nth-child(1) {
-    order: 2;
-  }
-  .stat-card-frameworks > div:nth-child(2) {
-    order: 1;
   }
 }
 </style>

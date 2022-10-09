@@ -9,12 +9,7 @@
         <img class="profile-picture" alt="Picture of Me" src="~@/assets/me.jpg" />
       </div>
       <div class="content-rhs" ref="contentRhs">
-        <p
-          class="font-mono text-primary font-labelle"
-          style="font-size: 1.6rem; line-height: 0.8rem"
-        >
-          Hello, my name is
-        </p>
+        <h3 class="font-mono font-labelle">Hello, my name is</h3>
         <h1 class="text-primary">Mark Cummins.</h1>
         <h2>I build things for the web.</h2>
         <br />
@@ -25,12 +20,9 @@
 </template>
 
 <script>
-import { ref, onMounted, inject, watch } from "vue";
-
 import { gsap } from "gsap";
-
 import mapboxgl from "mapbox-gl";
-
+import { ref, onMounted, inject, watch } from "vue";
 import Terminal from "@/components/components/terminal.vue";
 
 export default {
@@ -50,18 +42,20 @@ export default {
     const terminalEnabled = ref(false);
 
     const mapBox = ref(null);
-    const debug = ref(false);
+    const debug = ref(true);
 
     const theme = inject("theme");
 
     watch(theme, (oldTheme, newTheme) => {
-      mapBox.value.setStyle(
-        newTheme === "light"
-          ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk"
-          : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r"
-      );
+      if (mapBox.value) {
+        mapBox.value.setStyle(
+          newTheme === "light"
+            ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk"
+            : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r"
+        );
 
-      gsap.fromTo(overlay.value, { opacity: 0 }, { opacity: 1, duration: 1 });
+        gsap.fromTo(overlay.value, { opacity: 0 }, { opacity: 1, duration: 1 });
+      }
     });
 
     const mapAnimate = () => {
@@ -100,7 +94,7 @@ export default {
 
       tl.to(splash.value, { opacity: 0, duration: 0.4, ease: "Power2.in" }, 2);
 
-      tl.to(map.value, { opacity: .8, duration: 1, ease: "Power2.in" }, 2.4);
+      tl.to(map.value, { opacity: 0.8, duration: 1, ease: "Power2.in" }, 2.4);
 
       tl.to(
         map.value,
@@ -219,31 +213,56 @@ export default {
   width: 100%;
   height: 100vh;
 }
+
 .content {
+  opacity: 1;
   z-index: 30;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  padding: 0 1rem;
   position: absolute;
 
-  opacity: 1;
   display: grid;
-  column-gap: 4vw;
-  align-items: center;
-  grid-template-columns: 2fr 4fr;
+  row-gap: 4vh;
+  grid-template-rows: 2fr 4fr;
+  grid-template-columns: 1fr;
 
   .content-lhs {
     opacity: 0;
-    text-align: right;
-    justify-self: end;
+    justify-self: center;
+    align-self: flex-end;
   }
   .content-rhs {
     opacity: 0;
-    justify-self: start;
+    align-self: flex-start;
+    justify-self: center;
   }
 
   .profile-picture {
     border-radius: 50%;
     max-width: 12rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    row-gap: 0;
+    column-gap: 4vw;
+    align-items: center;
+    align-self: center;
+
+    grid-template-rows: unset;
+    grid-template-columns: 2fr 4fr;
+
+    .content-lhs {
+      text-align: right;
+      justify-self: flex-end;
+      align-self: center;
+    }
+    .content-rhs {
+      align-self: center;
+      justify-self: flex-start;
+    }
   }
 }
 </style>
