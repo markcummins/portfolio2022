@@ -30,9 +30,6 @@ export default {
 
 <style lang="scss" scoped>
 section.footer {
-  background: rgb(var(--background));
-  border-top: 1px solid rgba(var(--foreground), 0.2);
-
   .footer-content {
     padding: 0 0 0 0;
     text-align: center;

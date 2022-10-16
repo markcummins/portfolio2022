@@ -4,29 +4,22 @@
     :to="{ display: 'flex', opacity: 1, y: 0, delay: 0 }"
   >
     <div class="card">
-      <img class="img-fluid" src="@/assets/dark/educate-magis.jpg" />
+      <div class="card-img">
+        <slot name="img" />
+      </div>
       <div class="content">
         <div class="card-title">
-          <h4>Educate Magis</h4>
+          <h4><slot name="title"></slot></h4>
         </div>
         <div class="card-description">
-          <p>
-            A web app for visualizing personalized Spotify data. View your top artists,
-            top tracks, recently played tracks.
-          </p>
-          <p v-if="Math.random() < 0.5">
-            View your top artists, top tracks, recently played tracks, and detailed audio
-            information about each track.
-          </p>
+          <slot name="description"></slot>
         </div>
         <p class="card-tags">
-          React | Styled Components | Express | Spotify API | Heroku | Express | Spotify
-          API | Heroku
+          <slot name="tags"></slot>
         </p>
 
         <p class="card-icons">
-          <span><IconLink /></span>
-          <span><IconGithub /></span>
+          <slot name="icons"></slot>
         </p>
       </div>
     </div>
@@ -35,16 +28,11 @@
 
 <script>
 import { inject } from "vue";
-
-import IconLink from "@carbon/icons-vue/es/earth/24";
-import IconGithub from "@carbon/icons-vue/es/logo--github/24";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 
 export default {
   name: "component-card-project-mini",
   components: {
-    IconLink,
-    IconGithub,
     ScrollAnimation,
   },
   setup() {
@@ -81,7 +69,8 @@ export default {
 
     .card-tags {
       margin: 0;
-      padding: 1rem 0;
+      padding: .8rem 0;
+      line-height: 1.4rem;
       font-family: var(--font-mono);
       color: rgb(var(--primary-500));
       border-top: 2px solid rgba(var(--primary-500), 0.2);

@@ -2,10 +2,11 @@
   <div>
     <NavTop />
     <HeaderMap />
-    <Statistics />
-    <Work />
-    <Projects />
-    <Contact />
+    <About id="section-about" />
+    <Statistics id="section-stats" />
+    <Work id="section-work" />
+    <Projects id="section-projects" />
+    <Contact id="section-contact" />
     <Footer />
   </div>
 </template>
@@ -16,6 +17,7 @@ import NavTop from "./components/nav/header/nav.vue";
 import Footer from "./components/nav/footer/nav.vue";
 
 import Work from "./components/sections/work.vue";
+import About from "./components/sections/about.vue";
 import Contact from "./components/sections/contact.vue";
 import Projects from "./components/sections/projects.vue";
 import HeaderMap from "./components/sections/header-map.vue";
@@ -25,6 +27,7 @@ export default {
   name: "App",
   components: {
     Work,
+    About,
     Footer,
     NavTop,
     Contact,
@@ -63,5 +66,4 @@ export default {
 @import "~@/style/fonts.css";
 @import "~@/style/keyframes.css";
 @import "~@/style/app.css";
-
 </style>

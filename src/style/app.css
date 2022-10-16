@@ -1,4 +1,5 @@
 * {
+  scroll-padding-top: 3em;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -25,16 +26,16 @@ body.theme-light {
 
   --foreground: 55, 55, 55;
   /* Primary */
-  --primary-50: 234, 234, 239;
-  --primary-100: 203, 203, 215;
-  --primary-200: 168, 168, 188;
-  --primary-300: 133, 133, 161;
-  --primary-400: 106, 106, 140;
-  --primary-500: 80, 80, 120;
-  --primary-600: 73, 73, 112;
-  --primary-700: 64, 64, 101;
-  --primary-800: 55, 55, 91;
-  --primary-900: 39, 39, 72;
+  --primary-50: 228, 232, 236;
+  --primary-100: 188, 198, 208;
+  --primary-200: 144, 160, 177;
+  --primary-300: 99, 122, 145;
+  --primary-400: 65, 94, 122;
+  --primary-500: 32, 65, 98;
+  --primary-600: 28, 59, 90;
+  --primary-700: 24, 50, 80;
+  --primary-800: 19, 42, 70;
+  --primary-900: 11, 28, 52;
 }
 
 body.theme-dark {
@@ -181,6 +182,16 @@ h4 {
 small {
   font-size: 80%;
   font-weight: 400;
+}
+
+a {
+  color: rgb(var(--primary-500));
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid rgb(var(--primary-500));
+  ;
 }
 
 a.btn {

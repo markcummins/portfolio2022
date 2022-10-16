@@ -2,15 +2,26 @@
   <div id="nav-top-desktop" :class="{ 'nav-hidden': scrollDirection === 'down' }">
     <div>
       <div>
-        <img v-if="theme === 'dark'" src="@/assets/dark/logo.svg" />
-        <img v-if="theme === 'light'" src="@/assets/light/logo.svg" />
+        <img v-if="theme === 'dark'" src="@/assets/logo-dark.svg" />
+        <img v-if="theme === 'light'" src="@/assets/logo-light.svg" />
       </div>
       <div>
         <div class="font-mono">
-          <span><small>01. Technologies</small></span>
-          <span><small>02. Work</small></span>
-          <span><small>03. Projects</small></span>
-          <span><small>04. Get In Touch</small></span>
+          <a href="#section-about"
+            ><small> <span>01.</span> About</small>
+          </a>
+          <a href="#section-stats"
+            ><small> <span>02.</span> Technologies</small>
+          </a>
+          <a href="#section-work"
+            ><small> <span>03.</span> Work</small>
+          </a>
+          <a href="#section-projects"
+            ><small> <span>04.</span> Projects</small>
+          </a>
+          <a href="#section-contact"
+            ><small> <span>05.</span> Get In Touch</small>
+          </a>
         </div>
         <IconLight class="icon-theme" @click="switchTheme()" />
       </div>
@@ -88,19 +99,23 @@ export default {
         display: flex;
         margin-right: 2rem;
 
-        span {
+        a {
           height: 32px;
           display: flex;
           cursor: pointer;
           margin: 0 0.6rem;
           align-items: center;
-          text-transform: uppercase;
+          color: rgb(var(--foreground));
           transition: color 0.15s ease-in-out, scale 0.15s ease-in-out,
             padding 0.15s ease-in-out;
 
+          span {
+            color: rgb(var(--primary-500));
+          }
+
           &:hover {
             scale: 1.1;
-            padding: 0 .3rem;
+            padding: 0 0.3rem;
             color: rgb(var(--primary-500));
           }
         }

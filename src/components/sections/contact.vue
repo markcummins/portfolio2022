@@ -1,11 +1,11 @@
 <template>
-  <section class="contact">
+  <RootSection class="contact">
     <Container>
-      <Title prefix="04.">Get In Touch</Title>
+      <Title prefix="05.">Get In Touch</Title>
       <div class="card">
         <ScrollAnimation
           :from="{ opacity: 0, y: 100 }"
-          :to="{ opacity: 1, y: 0, stagger: .25, delay: .6 }"
+          :to="{ opacity: 1, y: 0, stagger: 0.25, delay: 0.6 }"
         >
           <div>
             <p>
@@ -20,12 +20,13 @@
         </ScrollAnimation>
       </div>
     </Container>
-  </section>
+  </RootSection>
 </template>
 
 <script>
 import Title from "@/components/layout/title.vue";
 import Container from "@/components/layout/container.vue";
+import RootSection from "@/components/layout/section-root.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 
 export default {
@@ -33,6 +34,7 @@ export default {
   components: {
     Title,
     Container,
+    RootSection,
     ScrollAnimation,
   },
 };
@@ -40,10 +42,6 @@ export default {
 
 <style lang="scss" scoped>
 section.contact {
-  padding: 1rem 0;
-  background: rgb(var(--background));
-  min-height: 480px;
-
   .card {
     margin: 0 auto;
     max-width: 640px;

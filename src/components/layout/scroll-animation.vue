@@ -39,7 +39,8 @@ export default {
         {
           scrollTrigger: {
             trigger: el.value,
-            start: "top 80%",
+            markers: false,
+            start: "top 85%",
             toggleActions: "play null null reverse",
           },
           ...props.to,

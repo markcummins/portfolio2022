@@ -1,7 +1,7 @@
 <template>
   <div ref="overlay" class="overlay">
     <div ref="splash" class="splash">
-      <img src="@/assets/dark/logo.svg" />
+      <img src="@/assets/logo-dark.svg" />
     </div>
     <div ref="map" id="map"></div>
     <div ref="content" class="content">
@@ -42,7 +42,7 @@ export default {
     const terminalEnabled = ref(false);
 
     const mapBox = ref(null);
-    const debug = ref(true);
+    const debug = ref(false);
 
     const theme = inject("theme");
 
@@ -239,8 +239,9 @@ export default {
   }
 
   .profile-picture {
-    border-radius: 50%;
     max-width: 12rem;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 0.8rem rgba(var(--primary-500), .12));
   }
 }
 

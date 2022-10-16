@@ -7,78 +7,66 @@
       <div class="card">
         <div class="card-body">
           <div class="card-img">
-            <!-- <img v-if="theme === 'light'" src="@/assets/light/bam.png" /> -->
-            <!-- <img v-if="theme === 'light'" src="@/assets/dark/bam.png" /> -->
-            <img src="@/assets/dark/educate-magis.jpg" />
+            <slot name="img" />
           </div>
           <div class="card-content">
             <div class="card-title">
-              <h4>Educate Magis</h4>
+              <h4>
+                <slot name="title" />
+              </h4>
             </div>
             <div class="card-description">
-              <p>
-                A web app for visualizing personalized Spotify data. View your top
-                artists, top tracks, recently played tracks, and detailed audio
-                information about each track.
-              </p>
-              <p>
-                View your top artists, top tracks, recently played tracks, and detailed
-                audio information about each track. Create and save new playlists of
-                recommended tracks based on your existing playlists and more.
-              </p>
-              <p>
-                View your top artists, top tracks, recently played tracks, and detailed
-                audio information about each track. Create and save new playlists of
-                recommended tracks based on your existing playlists.
-              </p>
+              <slot name="content" />
             </div>
 
             <p class="card-tags">
-              React | Styled Components | Express | Spotify API | Heroku | Express |
-              Spotify API | Heroku
+              <slot name="tags" />
             </p>
           </div>
         </div>
         <div class="card-footer">
           <div class="card-icons">
-            <span><IconLink /></span>
-            <span><IconGithub /></span>
+            <slot name="icons" />
           </div>
           <div>
-            <a href="#" class="btn btn-primary" @click.prevent="showMore">Read More...</a>
+            <a v-if="readMore" href="#" class="btn btn-primary" @click.prevent="showMore"
+              >Read More...</a
+            >
           </div>
         </div>
       </div>
     </ScrollAnimation>
 
     <div ref="more" class="more">
-      <h1>Educate Magis</h1>
-      <img class="img-fluid rounded" src="@/assets/dark/educate-magis.jpg" />
+      <div>
+        <slot name="more" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, inject, onMounted } from "vue";
-
 import { gsap } from "gsap";
+import { ref, onMounted } from "vue";
 
-import IconLink from "@carbon/icons-vue/es/earth/32";
-import IconGithub from "@carbon/icons-vue/es/logo--github/32";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 
 export default {
   name: "component-card-project-featured",
   components: {
-    IconLink,
-    IconGithub,
     ScrollAnimation,
   },
+
+  props: {
+    readMore: {
+      type: Boolean,
+      required: true,
+    },
+  },
+
   setup() {
     const more = ref(null);
     const tl = gsap.timeline({ paused: true });
-
-    const theme = inject("theme");
 
     const showMore = () => {
       tl.totalProgress() === 1 ? tl.reverse() : tl.play();
@@ -88,23 +76,23 @@ export default {
       tl.fromTo(
         more.value,
         {
-          y: -100,
+          y: 300,
           height: 0,
         },
         {
-          height: "auto",
-          display: "block",
-          opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: "power1.out",
+          opacity: 1,
+          height: "auto",
+          duration: 0.35,
+          display: "block",
+          ease: "circ.inOut",
+          marginBottom: "2rem",
         }
       );
     });
 
     return {
       more,
-      theme,
       showMore,
     };
   },
@@ -112,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
+:deep(.card) {
   margin-bottom: 3rem;
 
   .card-body {
@@ -148,6 +136,7 @@ export default {
 
     .card-tags {
       padding: 1rem 0;
+      line-height: 1.4rem;
       font-family: var(--font-mono);
       color: rgb(var(--primary-500));
     }
@@ -193,8 +182,29 @@ export default {
   height: 0;
   opacity: 0;
   overflow: hidden;
-  img {
-    width: 600px;
+
+  > div {
+    padding: 3rem;
+    border-radius: 0.8rem;
+    margin-bottom: 2rem;
+    background: rgb(var(--background-tint));
+
+    :deep(> div) {
+      display: grid;
+      column-gap: 3rem;
+      align-items: center;
+      grid-template-columns: 1fr;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 4fr 2fr;
+        > div:nth-child(1) {
+          order: 2;
+        }
+        > div:nth-child(2) {
+          order: 1;
+        }
+      }
+    }
   }
 }
 </style>

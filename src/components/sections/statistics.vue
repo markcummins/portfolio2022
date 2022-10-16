@@ -1,7 +1,7 @@
 <template>
-  <section class="statistics">
+  <RootSection class="statistics">
     <Container>
-      <Title prefix="01.">Technologies</Title>
+      <Title prefix="02.">Technologies</Title>
 
       <div class="stat-card stat-card-languages">
         <ScrollAnimation
@@ -15,7 +15,7 @@
         <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
           <div class="stat-card-content">
             <div>
-              <h3 class="text-primary"><Tag tag="h3"> Languages / Scripts </Tag></h3>
+              <h3 class="text-primary"><Tag tag="h3"> Languages &amp; Scripts </Tag></h3>
               <p>
                 <Tag tag="p">
                   I started out studying <strong>Java</strong> in college. At the time, it
@@ -49,7 +49,7 @@
         <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
           <div class="stat-card-content">
             <div>
-              <h3 class="text-primary"><Tag tag="h3"> Frameworks / Platforms </Tag></h3>
+              <h3 class="text-primary"><Tag tag="h3"> Frameworks &amp; Platforms </Tag></h3>
               <p>
                 <Tag tag="p">
                   Over the last nine years, I have had the opportunity to work with many
@@ -65,7 +65,7 @@
         </ScrollAnimation>
       </div>
     </Container>
-  </section>
+  </RootSection>
 </template>
 
 <script>
@@ -73,6 +73,7 @@ import Tag from "@/components/layout/tag.vue";
 import Title from "@/components/layout/title.vue";
 import Radar from "@/components/components/radar.vue";
 import Container from "@/components/layout/container.vue";
+import RootSection from "@/components/layout/section-root.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
 
 export default {
@@ -82,6 +83,7 @@ export default {
     Radar,
     Title,
     Container,
+    RootSection,
     ScrollAnimation,
   },
 
@@ -150,9 +152,6 @@ export default {
 
 <style lang="scss" scoped>
 section.statistics {
-  background: rgb(var(--background));
-  padding: 1rem 0;
-
   .stat-card {
     display: grid;
     row-gap: 1rem;

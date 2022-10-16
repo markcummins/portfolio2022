@@ -1,8 +1,10 @@
 <template>
   <div class="card">
     <h3 class="card-title"><slot name="title" /></h3>
-    <p class="card-subtitle"><slot name="subtitle" /></p>
-    <p class="card-mata"><slot name="mata" /></p>
+    <p>
+      <span class="card-subtitle"><slot name="subtitle" /></span><br />
+      <i class="card-meta"><slot name="meta" /></i>
+    </p>
     <div class="card-content">
       <slot name="content" />
     </div>
@@ -25,16 +27,26 @@ export default {
   border-radius: 0.3rem;
   color: rgb(var(--foreground));
 
-  .card-title {
+  :deep(.card-title) {
     color: rgb(var(--primary-500));
     padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+    > span {
+      color: rgb(var(--foreground));
+      font-family: var(--font-mono);
+    }
   }
   .card-subtitle {
-    font-family: var(--font-mono);
     font-weight: 600;
+    // font-family: var(--font-mono);
+    color: rgb(var(--primary-500));
   }
 
-  ::v-deep .card-content {
+  .card-meta {
+    // font-family: var(--font-mono);
+    // font-weight: 600;
+  }
+
+  :deep(.card-content) {
     > div {
       display: flex;
       > div:nth-child(1) {

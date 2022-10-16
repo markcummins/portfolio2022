@@ -41,7 +41,7 @@ export default {
 
     const getColors = () => {
       return {
-        primary: theme.value === "dark" ? "138, 198, 232" : "80, 80, 120",
+        primary: theme.value === "dark" ? "138, 198, 232" : "32, 65, 98",
       };
     };
 

@@ -12,31 +12,32 @@
         <IconClose v-else-if="isOpen" @click="toggleOpen" />
       </Transition>
     </div>
-    <div class="nav-menu-mobile-container" :class="{}">
+    <div class="nav-menu-mobile-container">
       <div class="nav-menu-mobile-menu">
         <div>
           <div>
             <h2>
-              <span>01.</span>
-              <strong>Technologies</strong>
+              <a href="#section-about" @click="close()"><span>01.</span> About</a>
             </h2>
           </div>
           <div>
             <h2>
-              <span>02.</span>
-              <strong>Work</strong>
+              <a href="#section-stats" @click="close()"><span>02.</span> Technologies</a>
             </h2>
           </div>
           <div>
             <h2>
-              <span>03.</span>
-              <strong>Projects</strong>
+              <a href="#section-work" @click="close()"><span>03.</span> Work</a>
             </h2>
           </div>
           <div>
             <h2>
-              <span>04.</span>
-              <strong>Get In Touch</strong>
+              <a href="#section-projects" @click="close()"><span>04.</span> Projects</a>
+            </h2>
+          </div>
+          <div>
+            <h2>
+              <a href="#section-contact" @click="close()"><span>05.</span> Contact</a>
             </h2>
           </div>
         </div>
@@ -61,11 +62,17 @@ export default {
     const isOpen = ref(false);
 
     const toggleOpen = () => {
-      isOpen.value = !isOpen.value;
+      isOpen.value === true ? close() : open();
+    };
 
-      isOpen.value === true
-        ? (document.body.style.overflow = "hidden")
-        : (document.body.style.overflow = "scroll");
+    const open = () => {
+      isOpen.value = true;
+      document.body.style.overflow = "hidden";
+    };
+
+    const close = () => {
+      isOpen.value = false;
+      document.body.style.overflow = "";
     };
 
     const currentScroll = ref(0);
@@ -79,6 +86,7 @@ export default {
     });
 
     return {
+      close,
       isOpen,
       toggleOpen,
       scrollDirection,
@@ -106,6 +114,16 @@ export default {
   z-index: 1020;
   position: fixed;
 
+  height: 0;
+  transition: opacity 0.25s ease-out, height 0.25s ease-out;
+
+  &.nav-active {
+    height: 100%;
+    .nav-menu-mobile-container {
+      opacity: 1;
+    }
+  }
+
   .nav-menu-mobile-icon {
     top: 2rem;
     right: 2rem;
@@ -124,8 +142,15 @@ export default {
     z-index: 1030;
     opacity: 0;
     overflow: hidden;
+    position: absolute;
     backdrop-filter: blur(0.4rem);
     transition: opacity 0.5s ease-in-out;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
     .nav-menu-mobile-menu {
       display: flex;
       align-items: center;
@@ -137,29 +162,21 @@ export default {
       bottom: 0;
       background: rgba(var(--background), 0.8);
 
-      div {
-        font-family: var(--font-sans);
-        span {
-          margin-right: 0.8rem;
-          font-family: var(--font-mono);
-        }
-        strong {
-          color: rgb(var(--primary-500));
+      > div {
+        display: flex;
+        row-gap: 0.8rem;
+        flex-direction: column;
+
+        h2 a {
+          color: rgb(var(--foreground));
+
+          span {
+            margin-right: 0.8rem;
+            font-family: var(--font-mono);
+            color: rgb(var(--primary-500));
+          }
         }
       }
-    }
-  }
-
-  &.nav-active {
-    bottom: 0;
-    .nav-menu-mobile-container {
-      opacity: 1;
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
   }
 }
