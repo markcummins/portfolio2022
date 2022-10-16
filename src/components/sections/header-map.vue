@@ -60,7 +60,7 @@ export default {
 
     const mapAnimate = () => {
       mapboxgl.accessToken =
-        "pk.eyJ1IjoibWFyay1jdW1taW5zIiwiYSI6ImNsOGo2ZjByZzBndW8zbnM2bXJsNjgzMmIifQ.Ed1-0JG1lsPao6WVzAhCiw";
+        "pk.eyJ1IjoibWFyay1jdW1taW5zIiwiYSI6ImNsOWJkMG54dTFpNDQzb212cXJtMmR0NTEifQ.eeIYxtj-pNruY2srd843bA";
 
       mapBox.value = new mapboxgl.Map({
         container: "map",
@@ -241,7 +241,7 @@ export default {
   .profile-picture {
     max-width: 12rem;
     border-radius: 50%;
-    filter: drop-shadow(0 0 0.8rem rgba(var(--primary-500), .12));
+    filter: drop-shadow(0 0 0.8rem rgba(var(--primary-500), 0.12));
   }
 }
 
