@@ -11,7 +11,10 @@
       <div class="content-rhs" ref="contentRhs">
         <h3 class="font-mono font-labelle">Hello, my name is</h3>
         <h1 class="text-primary">Mark Cummins.</h1>
-        <h2>I build things for the web.</h2>
+        <h2>
+          I am a
+          <u><i ref="dynamicH2"></i></u>
+        </h2>
         <br />
         <Terminal v-if="terminalEnabled" />
       </div>
@@ -21,9 +24,12 @@
 
 <script>
 import { gsap } from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
+
 import mapboxgl from "mapbox-gl";
-import { ref, onMounted, inject, watch } from "vue";
 import Terminal from "@/components/components/terminal.vue";
+
+import { ref, onMounted, inject, watch } from "vue";
 
 export default {
   name: "HeaderMap",
@@ -40,6 +46,7 @@ export default {
     const contentLhs = ref(null);
     const contentRhs = ref(null);
     const terminalEnabled = ref(false);
+    const dynamicH2 = ref(false);
 
     const mapBox = ref(null);
     const debug = ref(false);
@@ -145,13 +152,89 @@ export default {
       );
     };
 
+    const h2Animate = () => {
+      const tl = gsap.timeline({ delay: 2, repeat: -1, repeatDelay: 2 });
+
+      const terms = [
+        {
+          mock: "4b7281a9 3a4574eb",
+          real: "Software Engineer",
+        },
+        {
+          mock: "Afb5abc 93cb34171",
+          real: "Backend Developer",
+        },
+        {
+          mock: "066da6e68",
+          real: "Developer",
+        },
+        {
+          mock: "C737dba6ff",
+          real: "Programmer",
+        },
+        {
+          mock: "1ebc737d Srgtgulwx",
+          real: "Frontend Developer",
+        },
+        {
+          mock: "Bya Xcgaabadz",
+          real: "Web Developer",
+        },
+        {
+          mock: "Bycxcqaacm E85vsgtkh",
+          real: "JavaScript Developer",
+        },
+        {
+          mock: "Bcc Aaaaibavc",
+          real: "PHP Developer",
+        },
+        {
+          mock: "Bydbcqaa Akhbii",
+          real: "Software Tester",
+        },
+        {
+          mock: "Byah-Qaaam Ckobdyqkv",
+          real: "Full-Stack Developer",
+        },
+        {
+          mock: "Byahdq Aamjckobd",
+          real: "DevOps Developer",
+        },
+        {
+          mock: "Bycxcqaa",
+          real: "Designer",
+        },
+        {
+          mock: "Gv2pl",
+          real: "Coder",
+        },
+      ];
+
+      terms.forEach((term) => {
+        tl.to(dynamicH2.value, {
+          delay: 3,
+          duration: .2,
+          text: { value: term.mock, delimiter: "" },
+          ease: "none",
+        });
+        tl.to(dynamicH2.value, {
+          duration: 1,
+          text: { value: term.real, delimiter: "" },
+          ease: "none",
+        });
+      });
+    };
+
     onMounted(() => {
+      gsap.registerPlugin(TextPlugin);
+
       setTimeout(() => {
         if (debug.value === false) {
           mapAnimate();
         }
       }, 2000);
 
+      h2Animate();
       contentAnimate();
     });
 
@@ -160,6 +243,7 @@ export default {
       splash,
       overlay,
       content,
+      dynamicH2,
       contentLhs,
       contentRhs,
       terminalEnabled,
@@ -167,21 +251,6 @@ export default {
   },
 };
 </script>
-
-<style>
-/* .marker {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  background-size: cover;
-} */
-/* body.theme-dark .marker {
-  background-image: url("~@/assets/logo-dark.png");
-} */
-/* body.theme-light .marker {
-  background-image: url("~@/assets/logo-light.png");
-} */
-</style>
 
 <style scoped lang="scss">
 .overlay {
@@ -261,6 +330,7 @@ export default {
       align-self: center;
     }
     .content-rhs {
+      min-width: 32rem;
       align-self: center;
       justify-self: flex-start;
     }

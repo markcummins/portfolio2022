@@ -1,41 +1,62 @@
 <template>
   <div ref="terminal" class="shell">
-    <div class="close" @click="close">
-      <IconClose />
+    <!-- Header -->
+    <div class="shell-header">
+      <div></div>
+      <div>
+        <strong><i>$bash</i></strong>
+      </div>
+      <div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="shell-content">
-      <div class="shell-content-interactive">
-        <div style="color: #8ac6e8"><p>~/home</p></div>
+    <!-- Body -->
+    <div class="shell-body">
+      <div style="color: #8ac6e8">
+        <p>
+          <span>~/home</span>
+          <span class="t-l1">$</span>
+          <span ref="animatedCmd" class="t-l2"></span>
+          <span ref="animatedTxt" class="t-l3"></span>
+        </p>
+      </div>
+      <div ref="gsapGrpA" class="gsap-grp-a">
         <div>
           <p>
-            <span style="color: #8ac6e8">$</span>
-            <span ref="animatedCmd" style="color: #4e988b"></span>
+            <span>~/portfolio</span>
+            <span class="t-l1">$</span>
+            <span class="t-l2">npm</span>
+            <span class="t-l3">run init</span>
           </p>
         </div>
-        <div><p style="color: #df9147" ref="animatedTxt"></p></div>
+        <br />
+        <div>
+          <p class="t-comment">
+            <span># type</span>
+            <span class="t-l3">`npm build`</span>
+            <span>and click</span>
+            <span class="t-l3">↵</span>
+            <span>enter</span>
+          </p>
+        </div>
+        <div>
+          <p>
+            <span>~/portfolio</span>
+            <span class="t-l1">$</span>
+            <span class="t-l2" style="display: none" ref="cliProgressA"></span>
+            <span class="t-l3" style="display: none" ref="cliProgressB"></span>
+            <span ref="cliProgressC"><Blinky /></span>
+          </p>
+        </div>
       </div>
-      <div class="shell-content-static" ref="stagger">
+      <div ref="gsapGrpB" class="gsap-grp-b">
         <div>
-          <p>+ Profile:</p>
-        </div>
-        <div>
-          <p>&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Mark Cummins</p>
-        </div>
-        <div>
-          <p>&nbsp;&nbsp;Location&nbsp;: Offaly, Ireland</p>
-        </div>
-        <div>
-          <p>&nbsp;</p>
-        </div>
-        <div class="shell-content-interactive">
-          <div style="color: #8ac6e8"><p>~/home</p></div>
-          <div>
-            <p>
-              <span style="color: #8ac6e8">$</span>
-            </p>
-          </div>
-          <div><p style="color: #df9147"></p></div>
-          <div><Blinky /></div>
+          <p>
+            <span class="tag-l2">DONE</span>
+            <span class="t-l2"> Compiled successfully in 571ms</span>
+          </p>
         </div>
       </div>
     </div>
@@ -46,8 +67,6 @@
 import { ref, onMounted } from "vue";
 import Blinky from "@/components/components/blinking-cursor";
 
-import IconClose from "@carbon/icons-vue/es/close--filled/16";
-
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 
@@ -56,54 +75,83 @@ export default {
 
   components: {
     Blinky,
-    IconClose,
   },
 
   setup() {
     const terminal = ref(null);
-    const stagger = ref(null);
+
+    const gsapGrpA = ref(null);
+    const gsapGrpB = ref(null);
 
     const animatedCmd = ref(null);
     const animatedTxt = ref(null);
 
+    const cliProgressA = ref(null);
+    const cliProgressB = ref(null);
+    const cliProgressC = ref(null);
+    const cliProgressEnter = ref(null);
+
+    const tl = gsap.timeline();
+
     onMounted(() => {
       gsap.registerPlugin(TextPlugin);
-      const tl = gsap.timeline();
 
       tl.to(animatedCmd.value, {
-        delay: 0,
+        delay: 1,
         duration: 0.4,
-        text: { value: " whoami", delimiter: "" },
+        text: { value: " cd", delimiter: "" },
         ease: "none",
       });
 
       tl.to(animatedTxt.value, {
         delay: 0,
-        duration: 0.4,
-        text: { value: "--all", delimiter: "" },
+        duration: 0.6,
+        text: { value: "./portfolio", delimiter: "" },
         ease: "none",
       });
 
-      tl.to(stagger.value.children, {
+      tl.to(gsapGrpA.value.children, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.4,
+        display: "block",
+      });
+
+      tl.to(cliProgressA.value, {
+        delay: 1,
+        display: "block",
+        duration: 0.8,
+        text: { value: "npm ", delimiter: "" },
+      });
+
+      tl.to(cliProgressB.value, {
+        display: "block",
+        duration: 1.2,
+        text: { value: "run build ", delimiter: "" },
+      });
+
+      tl.set(cliProgressC.value, {
+        display: "none",
+      });
+
+      tl.to(gsapGrpB.value.children, {
+        y: 0,
         opacity: 1,
         stagger: 0.2,
       });
-
-      tl.play();
     });
 
-    const close = () => {
-      gsap.to(terminal.value, {
-        y: -40,
-        opacity: 0,
-        duration: 0.25,
-      });
-    };
 
     return {
-      close,
-      stagger,
       terminal,
+
+      gsapGrpA,
+      gsapGrpB,
+
+      cliProgressA,
+      cliProgressB,
+      cliProgressC,
+      cliProgressEnter,
       animatedCmd,
       animatedTxt,
     };
@@ -113,44 +161,119 @@ export default {
 
 <style scoped lang="scss">
 .shell {
-  color: rgb(var(--foreground));
-  background-color: rgba(var(--background), .85);
-  padding: 1rem 1.5rem;
-  border-radius: 3px;
+  cursor: pointer;
+  max-width: 32rem;
   text-align: left;
+  border-radius: 3px;
   position: relative;
+  padding: 1rem 1.5rem;
+  color: rgb(var(--foreground));
+  background-color: rgba(var(--background), 0.85);
 
   p {
+    gap: 0.8rem;
+    display: flex;
+    align-items: center;
     margin: 0 auto 0.8rem auto;
     font-family: var(--font-mono);
     color: rgb(var(--foreground));
   }
 
-  .shell-content {
-    div.shell-content-interactive {
-      display: flex;
-      align-items: flex-start;
-      > div {
-        margin-right: 0.3rem;
-      }
+  .tag-l1 {
+    padding: 0 0.3rem;
+    border-radius: 2px;
+    color: rgb(var(--background));
+  }
+  .tag-l2 {
+    padding: 0 0.3rem;
+    border-radius: 2px;
+    color: rgb(var(--background));
+  }
+  .tag-l3 {
+    padding: 0 0.3rem;
+    border-radius: 2px;
+    color: rgb(var(--background));
+  }
+
+  .shell-header {
+    display: grid;
+    opacity: 0.4;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    > div:nth-child(2) {
+      color: #2e3748;
+      text-align: center;
     }
-    div.shell-content-static > div {
-      opacity: 0;
+    > div:nth-child(3) {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: 0.6rem;
+      > div {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background: #2e3748;
+      }
     }
   }
 
-  .close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out, scale 0.2s ease-in-out;
-    color: rgb(var(--foreground));
-
-    &:hover {
-      opacity: 0.8;
-      scale: 1.2;
+  .shell-body {
+    div.gsap-grp-a > div,
+    div.gsap-grp-b > div {
+      opacity: 0;
+      transform: translateY(10px);
     }
+  }
+}
+
+.theme-dark {
+  .t-l1 {
+    color: #8ac6e8;
+  }
+  .t-l2 {
+    color: #3fb950;
+  }
+  .t-l3 {
+    color: #ea4aaa;
+  }
+  .tag-l1 {
+    background: #8ac6e8;
+  }
+  .tag-l2 {
+    background: #3fb950;
+  }
+  .tag-l3 {
+    background: #ea4aaa;
+  }
+  .t-comment {
+    color: #8b949e;
+  }
+}
+
+.theme-light {
+  .t-l1 {
+    color: #006ad5;
+  }
+  .t-l2 {
+    color: #0e7a2c;
+  }
+  .t-l3 {
+    color: #b132ff;
+  }
+  .tag-l1 {
+    background: #006ad5;
+  }
+  .tag-l2 {
+    background: #0e7a2c;
+  }
+  .tag-l3 {
+    background: #b132ff;
+  }
+  .t-comment {
+    color: #e16215;
   }
 }
 </style>

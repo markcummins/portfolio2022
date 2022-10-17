@@ -3,7 +3,20 @@
     <Container>
       <div class="footer-content">
         <div>
-          <p><small>Site Designed and Built By Mark Cummins | 2022</small></p>
+          <p>
+            <small style="margin-bottom: 0.2rem">
+              Site Designed and Built By Mark Cummins | 2022
+            </small>
+            <small
+              >Check out the
+              <a
+                href="https://github.com/markcummins/portfolio2022/settings"
+                target="_blank"
+              >
+                source code
+              </a>
+            </small>
+          </p>
         </div>
         <div class="flag">
           <div>
@@ -23,7 +36,7 @@ import Container from "@/components/layout/container.vue";
 export default {
   name: "component-footer",
   components: {
-    Container,
+    Container
   },
 };
 </script>
@@ -39,6 +52,13 @@ section.footer {
     p {
       margin: 0;
       padding: 0.8rem 0;
+      small {
+        display: block;
+
+        a {
+          border-bottom: 1px solid rgb(var(--primary-500));
+        }
+      }
     }
 
     .flag {
