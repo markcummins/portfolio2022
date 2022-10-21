@@ -3,7 +3,7 @@
     <h3 class="card-title"><slot name="title" /></h3>
     <p>
       <span class="card-subtitle"><slot name="subtitle" /></span><br />
-      <i class="card-meta"><slot name="meta" /></i>
+      <span class="card-meta"><slot name="meta" /></span>
     </p>
     <div class="card-content">
       <slot name="content" />
@@ -20,7 +20,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   padding: 1.5rem;
-  max-width: 640px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
@@ -37,18 +37,17 @@ export default {
   }
   .card-subtitle {
     font-weight: 600;
-    // font-family: var(--font-mono);
     color: rgb(var(--primary-500));
   }
 
   .card-meta {
-    // font-family: var(--font-mono);
-    // font-weight: 600;
+    font-family: var(--font-mono);
   }
 
   :deep(.card-content) {
     > div {
       display: flex;
+      margin-bottom: 0.4rem;
       > div:nth-child(1) {
         color: rgb(var(--primary-500));
       }

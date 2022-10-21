@@ -3,16 +3,25 @@
     <Container>
       <Title prefix="01.">About</Title>
       <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
-        <div class="about-content">
+        <div class="about-content text-center">
           <div>
             <p>
-              Hello! My name is Mark and I am a Software Developer from Ireland. I first
-              started learning HTML in college while studing Audio Production, and I
-              started taking more of an interest in programming from there. In 2012, I
-              decided to enroll in the Graduate Diploma in Computing, and over the last
-              ten years...
+              Hi, my name is Mark and I am a software developer from Ireland. Currently, I
+              am working alongside a small team based in Galway called
+              <a href="#section-projects"> Educate Magis</a>.
             </p>
-            <p>...</p>
+            <p>
+              I mainly focus on Developing and Deploying new features for the site, and my
+              main strengths would be in Backend and Frontend Development. I also have
+              picked up a lot of skills in other areas over the years, such as DevOps,
+              Design, Software Testing, Database Management &amp; App Development.
+            </p>
+            <p>
+              I think the mix of problem-solving and creativity appeals to me when it
+              comes to programming. There is always a great satisfaction that comes with
+              working on a big project and finally seeing it work for the first time, and
+              then taking what you have learned on to the next project.
+            </p>
           </div>
         </div>
       </ScrollAnimation>

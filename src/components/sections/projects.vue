@@ -1,7 +1,7 @@
 <template>
   <RootSection class="projects">
     <Container>
-      <Title prefix="04.">Projects</Title>
+      <Title prefix="04.">Recent Projects</Title>
       <br />
 
       <ProjectFeatured :read-more="true">
@@ -17,12 +17,19 @@
             over the world.
           </p>
           <p>
-            The
-            <a href="https://www.educatemagis.org/" target="_blank">Educate Magis</a>
-            platform allows Members to engage in Conversations and Groups, and also has an
-            integration with Zoom, so educators can start and schedule online meetings.
-            There is a LMS (Learner Management System) section where members can take
-            courses. Click below to find out more...
+            Visitors to Educate Magis can use the platform for finding out more about
+            Jesuit Education and for finding resources that they can use in their Schools.
+          </p>
+          <p>
+            Members of the platform can use the site to Collaborate with each other. They
+            can use the forum to ask Questions or to post updates, they can create Groups
+            and schedule Meetings together directly from their Groups and Profiles via our
+            Zoom integration &amp; they can enroll in Courses and earn Certificates for
+            completing them from our LMS (Learner Management System).
+          </p>
+          <p>
+            There are also many more features on the platform, so click the Read More
+            button for a more detaled list of features.
           </p>
         </template>
         <template v-slot:tags
@@ -436,7 +443,7 @@
               <a href="https://jesedu-global2021.educatemagis.org/" target="_blank"
                 >II COLLOQUIUM JESEDU-Global2021</a
               >
-              was a follow up to the postponed JESEDU-Jogja2020 gathering
+              was a follow-up to the postponed JESEDU-Jogja2020 gathering
             </p>
             <p>
               The microsite was created using the same foundation as the JESEDU-Jogja2020
@@ -447,7 +454,7 @@
               <a
                 href="https://www.educatemagis.org/jesedu-global2021/colloquium-hub/"
                 target="_blank"
-                >seperate Hub area</a
+                >separate area</a
               >
               was created on the parent website for participants to engage and participate
               in.
@@ -469,7 +476,7 @@
           <template v-slot:img>
             <img class="img-fluid" src="@/assets/portfolio-2015.jpg" />
           </template>
-          <template v-slot:title>Portfolio</template>
+          <template v-slot:title>Portfolio - 2015</template>
           <template v-slot:description>
             <p>
               My original Portfolio site was built in 2015. It showcased some of my work
@@ -478,7 +485,8 @@
             <p>
               in 2022, I decided to revisit the site and to my surprise, it was still
               functioning and had some references to projects that I had worked on in the
-              past, so I decided to rebuild the site and bring it up to date for 2022.
+              past, so I am currently in the process of rebuilding the site to bring it up
+              to date.
             </p>
           </template>
           <template v-slot:tags>CodeIgniter | MySQL | Gulp | Flask | Python</template>
@@ -499,16 +507,15 @@
           <template v-slot:description>
             <p>
               I have created a lot of pens over the years on CodePen. It's a fantastic
-              resource for inspiration and for quick prototypes.
+              resource for inspiration and quick prototypes.
             </p>
             <p>
               Most of the pens I have created are just that, quick prototypes that aren't
-              finished, however I do have a collection of
-              <a href="https://codepen.io/collection/ExwrQL" target="_blank">Featured</a>
-              pens.
+              finished. I do have a collection of featured pens
+              <a href="https://codepen.io/collection/ExwrQL" target="_blank">here</a>.
             </p>
             <p>
-              Some of my favorites are an
+              Some of my favourites are an
               <a href="https://codepen.io/comminski/pen/zYjaKaN" target="_blank"
                 >Atari Breakout Clone</a
               >, a

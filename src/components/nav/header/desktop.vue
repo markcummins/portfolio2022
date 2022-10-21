@@ -6,21 +6,28 @@
         <img v-if="theme === 'light'" src="@/assets/logo-light.svg" />
       </div>
       <div>
-        <div class="font-mono">
-          <a href="#section-about"
+        <div>
+          <a class="nav-link" href="#section-about"
             ><small> <span>01.</span> About</small>
           </a>
-          <a href="#section-stats"
+          <a class="nav-link" href="#section-stats"
             ><small> <span>02.</span> Technologies</small>
           </a>
-          <a href="#section-work"
+          <a class="nav-link" href="#section-work"
             ><small> <span>03.</span> Work</small>
           </a>
-          <a href="#section-projects"
+          <a class="nav-link" href="#section-projects"
             ><small> <span>04.</span> Projects</small>
           </a>
-          <a href="#section-contact"
+          <a class="nav-link" href="#section-contact"
             ><small> <span>05.</span> Get In Touch</small>
+          </a>
+          <a
+            :href="publicPath + 'static/Resume%20-%20Mark%20Cummins.pdf'"
+            target="_blank"
+            class="nav-resume"
+          >
+            <small>Résumé</small>
           </a>
         </div>
         <IconLight class="icon-theme" @click="switchTheme()" />
@@ -60,6 +67,7 @@ export default {
       switchTheme,
       currentScroll,
       scrollDirection,
+      publicPath: process.env.BASE_URL,
     };
   },
 };
@@ -105,18 +113,32 @@ export default {
           cursor: pointer;
           margin: 0 0.6rem;
           align-items: center;
-          color: rgb(var(--foreground));
-          transition: color 0.15s ease-in-out, scale 0.15s ease-in-out,
-            padding 0.15s ease-in-out;
+          font-family: var(--font-mono);
+          transition: border 0.15s ease-in-out, color 0.15s ease-in-out,
+            scale 0.15s ease-in-out, padding 0.15s ease-in-out;
+        }
 
+        a.nav-link {
+          color: rgb(var(--foreground));
           span {
             color: rgb(var(--primary-500));
           }
-
           &:hover {
             scale: 1.1;
             padding: 0 0.3rem;
             color: rgb(var(--primary-500));
+          }
+        }
+
+        a.nav-resume {
+          padding: 0 0.8rem;
+          border-radius: 0.2rem;
+          color: rgb(var(--primary-500));
+          border: 1px solid rgb(var(--primary-500));
+          &:hover {
+            background: rgb(var(--primary-500));
+            border: 1px solid rgb(var(--primary-500));
+            color: rgb(var(--background));
           }
         }
       }

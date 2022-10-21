@@ -9,13 +9,14 @@
         >
           <div>
             <p>
-              Although I’m not currently looking for any new opportunities, my inbox is
-              always open. Whether you have a question or just want to say hi, I’ll try my
-              best to get back to you!
+              Feel free to reach out to me on EMail. Whether you have a question or just
+              want to
+              <strong class="font-labelle text-primary"><u>say hello</u></strong> &amp;
+              I’ll try my best to get back to you!
             </p>
           </div>
           <div>
-            <a href="#" class="btn btn-primary">Say Hello!</a>
+            <a href="mailto:markcumminsdev@gmail.com" class="btn btn-primary">Contact</a>
           </div>
         </ScrollAnimation>
       </div>
@@ -44,7 +45,7 @@ export default {
 section.contact {
   .card {
     margin: 0 auto;
-    max-width: 640px;
+    max-width: 520px;
     text-align: center;
 
     p {

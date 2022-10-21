@@ -18,20 +18,31 @@
               <h3 class="text-primary"><Tag tag="h3"> Languages &amp; Scripts </Tag></h3>
               <p>
                 <Tag tag="p">
-                  I started out studying <strong>Java</strong> in college. At the time, it
-                  was seen as a language that would only grow in popularity. We also
-                  studied <strong>SQL</strong> and <strong>COBOL</strong>.
+                  I completed the
+                  <a
+                    href="https://www.ul.ie/gps/software-development-higher-diploma"
+                    target="_blank"
+                    >Graduate Diploma in Software Development</a
+                  >
+                  in 2013 at the University of Limerick, which is a full-time conversion
+                  programme for non-ICT graduates wishing to enter the IT sector. That was
+                  my main introduction to Software Development and we studied the
+                  fundamentals, with a mix of theory and practical skills. The main
+                  languages that were used were Java, ASP.NET, SQL and COBOL, and there
+                  were also modules on UML (Unified Modeling Language) and Software
+                  Testing.
                 </Tag>
               </p>
               <p>
                 <Tag tag="p">
-                  When I finished college, I worked for a couple of startups that focused
-                  on Web Development and <strong>JavaScript</strong> &amp;
-                  <strong>PHP</strong>
+                  After College, I was an intern for a few of months with the
+                  <a href="https://www.localisation.ie/" taregt="_blank">
+                    LRC (Localization Research Center)
+                  </a>
+                  in Limerick. This is where I really started to learn about Web
+                  Development. Their site was built using Dart JS, PHP and the Twig
+                  template engine.
                 </Tag>
-              </p>
-              <p>
-                <Tag tag="p"> .etc .etc .etc </Tag>
               </p>
             </div>
           </div>
@@ -49,16 +60,41 @@
         <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
           <div class="stat-card-content">
             <div>
-              <h3 class="text-primary"><Tag tag="h3"> Frameworks &amp; Platforms </Tag></h3>
+              <h3 class="text-primary">
+                <Tag tag="h3"> Frameworks &amp; Platforms </Tag>
+              </h3>
               <p>
                 <Tag tag="p">
-                  Over the last nine years, I have had the opportunity to work with many
-                  Frameworks and Platforms. I have worked a lot with
-                  <strong>WordPress</strong> where I have built a lot of custom Plugins
+                  I Joined
+                  <a
+                    href="https://www.ilovelimerick.ie/bluechief-social-shows-promise-for-future/"
+                    target="_blank"
+                    >BlueChief</a
+                  >
+                  in December 2013. They were a small startup working on a number of PHP
+                  Web Applications and Websites. We used CodeIgniter and jQuery Mobile for
+                  the larger apps while using WordPress for some of the smaller projects.
+                  After a few years, the company decided to focus more on their Social
+                  Media business and began to pivot away from Software Development.
                 </Tag>
               </p>
               <p>
-                <Tag tag="p"> .etc .etc .etc </Tag>
+                <Tag tag="p">
+                  I began working with the
+                  <a href="http://educatemagis.org/" target="_blank">Educate Magis</a>
+                  team in 2015. I have had the opportunity to work on a wide range of
+                  projects since then using many different frameworks and tools such as
+                  Vue, Gatsby, Cypress, Docker, Flutter and many others.
+                </Tag>
+              </p>
+              <p>
+                <Tag tag="p">
+                  The majority of the Development work is currently split between backend
+                  development with PHP and frontend Development with Vue JS. The platform
+                  is quite large now, and the main GitHub repository has close to five
+                  thousand commits. There is a good mix of developing and building new
+                  features to the site &amp; maintaining all of the existing features.
+                </Tag>
               </p>
             </div>
           </div>
@@ -98,7 +134,7 @@ export default {
         "ElasticSearch",
         // Languages
         "Python",
-        "ASP.Net/VB.Net",
+        "ASP.Net",
         "Javascript",
         "PHP",
         "Cobol",

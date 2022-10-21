@@ -40,6 +40,15 @@
               <a href="#section-contact" @click="close()"><span>05.</span> Contact</a>
             </h2>
           </div>
+          <div>
+            <h2>
+              <a
+                :href="publicPath + 'static/Resume%20-%20Mark%20Cummins.pdf'"
+                @click="close()"
+                ><span>&nbsp;&nbsp;.</span> Résumé</a
+              >
+            </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -90,6 +99,7 @@ export default {
       isOpen,
       toggleOpen,
       scrollDirection,
+      publicPath: process.env.BASE_URL,
     };
   },
 };

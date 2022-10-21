@@ -49,42 +49,56 @@ export default {
     const dynamicH2 = ref(false);
 
     const mapBox = ref(null);
-    const debug = ref(false);
-
     const theme = inject("theme");
 
     watch(theme, (oldTheme, newTheme) => {
       if (mapBox.value) {
         mapBox.value.setStyle(
           newTheme === "light"
-            ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk"
-            : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r"
+            ? "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk?optimize=true"
+            : "mapbox://styles/mark-cummins/cl8ubr971006v17pvirsa457r?optimize=true"
         );
 
         gsap.fromTo(overlay.value, { opacity: 0 }, { opacity: 1, duration: 1 });
       }
     });
 
-    const mapAnimate = () => {
+    const animate = () => {
       mapboxgl.accessToken =
         "pk.eyJ1IjoibWFyay1jdW1taW5zIiwiYSI6ImNsOWJkMG54dTFpNDQzb212cXJtMmR0NTEifQ.eeIYxtj-pNruY2srd843bA";
 
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibWFyay1jdW1taW5zIiwiYSI6ImNsOWJkMWJvMTFoN2szb2xtNmN1eGYxY3UifQ.8Xt4GIj3S_XXdO-Ww0YyNw";
+
       mapBox.value = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk?2",
+        style: "mapbox://styles/mark-cummins/cl8uav2s600hz16piya0nxfdk?optimize=true",
         zoom: 1.5,
-        center: [30, 50],
+        minzoom: 3,
+        maxzoom: 8,
+        center: [-30, -50],
         projection: "globe",
         attributionControl: false,
       });
 
       mapBox.value.on("load", () => {
-        mapBox.value.flyTo({
-          center: [-7.90983, 52.91427],
-          zoom: 8,
-          speed: 0.32,
-          curve: 3,
-          essential: true,
+        h2Animate();
+        contentAnimate();
+
+        gsap.to(splash.value, {
+          delay: 0.8,
+          opacity: 0,
+          duration: 0.3,
+          ease: "Power2.in",
+          onComplete: () => {
+            mapBox.value.flyTo({
+              center: [-7.90983, 52.91427],
+              zoom: 8,
+              speed: 0.8,
+              curve: 0.32,
+              essential: true,
+            });
+          },
         });
       });
     };
@@ -92,15 +106,7 @@ export default {
     const contentAnimate = () => {
       const tl = gsap.timeline();
 
-      tl.fromTo(
-        splash.value,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "Power2.in" },
-        0.8
-      );
-
       tl.to(splash.value, { opacity: 0, duration: 0.4, ease: "Power2.in" }, 2);
-
       tl.to(map.value, { opacity: 0.8, duration: 1, ease: "Power2.in" }, 2.4);
 
       tl.to(
@@ -213,7 +219,7 @@ export default {
       terms.forEach((term) => {
         tl.to(dynamicH2.value, {
           delay: 3,
-          duration: .2,
+          duration: 0.2,
           text: { value: term.mock, delimiter: "" },
           ease: "none",
         });
@@ -227,15 +233,7 @@ export default {
 
     onMounted(() => {
       gsap.registerPlugin(TextPlugin);
-
-      setTimeout(() => {
-        if (debug.value === false) {
-          mapAnimate();
-        }
-      }, 2000);
-
-      h2Animate();
-      contentAnimate();
+      animate();
     });
 
     return {
@@ -262,7 +260,6 @@ export default {
 
 .splash {
   position: absolute;
-  opacity: 0;
   width: 100%;
   height: 100vh;
   display: flex;

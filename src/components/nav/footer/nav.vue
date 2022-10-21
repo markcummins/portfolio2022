@@ -5,16 +5,18 @@
         <div>
           <p>
             <small style="margin-bottom: 0.2rem">
-              Site Designed and Built By Mark Cummins | 2022
+              Site Designed and Built By
+              <strong class="font-labelle"><u>Mark Cummins</u></strong>
             </small>
             <small
               >Check out the
-              <a
-                href="https://github.com/markcummins/portfolio2022/settings"
-                target="_blank"
-              >
-                source code
-              </a>
+              <i class="font-mono">
+                [<a
+                  href="https://github.com/markcummins/portfolio2022/settings"
+                  target="_blank"
+                  >source code</a
+                >]
+              </i>
             </small>
           </p>
         </div>
@@ -36,7 +38,7 @@ import Container from "@/components/layout/container.vue";
 export default {
   name: "component-footer",
   components: {
-    Container
+    Container,
   },
 };
 </script>
@@ -46,7 +48,6 @@ section.footer {
   .footer-content {
     padding: 0 0 0 0;
     text-align: center;
-    font-family: var(--font-mono);
     color: rgb(var(--primary-500));
 
     p {
