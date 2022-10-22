@@ -7,7 +7,7 @@
       <ProjectFeatured :read-more="true">
         <template v-slot:title>Educate Magis - Online Community</template>
         <template v-slot:img>
-          <img src="@/assets/educate-magis.png" />
+          <img alt="Educate Magis Logo" src="@/assets/educate-magis.png" />
         </template>
         <template v-slot:content>
           <p>
@@ -74,7 +74,11 @@
 
           <div>
             <div>
-              <img class="img-fluid rounded" src="@/assets/educate-magis-map.jpg" />
+              <img
+                alt="Educate Magis Map"
+                class="img-fluid rounded"
+                src="@/assets/educate-magis-map.jpg"
+              />
             </div>
             <div>
               <p>
@@ -123,7 +127,11 @@
 
           <div>
             <div>
-              <img class="img-fluid rounded" src="@/assets/educate-magis-course.jpg" />
+              <img
+                alt="Educate Magis Courses"
+                class="img-fluid rounded"
+                src="@/assets/educate-magis-course.jpg"
+              />
             </div>
             <div>
               <p>
@@ -151,7 +159,11 @@
 
           <div>
             <div>
-              <img class="img-fluid rounded" src="@/assets/educate-magis-meetings.jpg" />
+              <img
+                alt="Educate Magis Meetings"
+                class="img-fluid rounded"
+                src="@/assets/educate-magis-meetings.jpg"
+              />
             </div>
             <div>
               <p>
@@ -181,7 +193,11 @@
           <h4 class="text-primary">Other Areas &amp; Features</h4>
           <div>
             <div>
-              <img class="img-fluid rounded" src="@/assets/educate-magis.jpg" />
+              <img
+                alt="Educate Magis Site"
+                class="img-fluid rounded"
+                src="@/assets/educate-magis.jpg"
+              />
             </div>
             <div>
               <p>
@@ -239,7 +255,7 @@
       <ProjectFeatured :read-more="false">
         <template v-slot:title>BAM - VS Code Dark Theme</template>
         <template v-slot:img>
-          <img src="@/assets/bam.png" />
+          <img alt="VS Bam Theme Logo" src="@/assets/bam.png" />
         </template>
         <template v-slot:content>
           <p>
@@ -291,7 +307,7 @@
       <ProjectFeatured :read-more="false">
         <template v-slot:title>Primail - WordPress Plugin</template>
         <template v-slot:img>
-          <img src="@/assets/primail.png" />
+          <img alt="Primail Plugin Logo" src="@/assets/primail.png" />
         </template>
         <template v-slot:content>
           <p>
@@ -336,7 +352,11 @@
       <div class="mini-card-group">
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/app.jpg" />
+            <img
+              alt="Educate Magis Android App"
+              class="img-fluid"
+              src="@/assets/app.jpg"
+            />
           </template>
           <template v-slot:title>Educate Magis App</template>
           <template v-slot:description>
@@ -367,7 +387,11 @@
 
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/sharepoint.jpg" />
+            <img
+              alt="ESPC Conference Logo"
+              class="img-fluid"
+              src="@/assets/sharepoint.jpg"
+            />
           </template>
           <template v-slot:title>ESPC 2017</template>
           <template v-slot:description>
@@ -397,7 +421,7 @@
 
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/jogja.jpg" />
+            <img alt="Jesedu Jogja Logo" class="img-fluid" src="@/assets/jogja.jpg" />
           </template>
           <template v-slot:title>JESEDU-Jogja 2020</template>
           <template v-slot:description>
@@ -435,7 +459,7 @@
 
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/global.jpg" />
+            <img alt="Jesedu Global Logo" class="img-fluid" src="@/assets/global.jpg" />
           </template>
           <template v-slot:title>JESEDU-Global 2021</template>
           <template v-slot:description>
@@ -474,7 +498,11 @@
 
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/portfolio-2015.jpg" />
+            <img
+              alt="Legacy Portfolio Logo"
+              class="img-fluid"
+              src="@/assets/portfolio-2015.jpg"
+            />
           </template>
           <template v-slot:title>Portfolio - 2015</template>
           <template v-slot:description>
@@ -501,7 +529,7 @@
 
         <ProjectMini>
           <template v-slot:img>
-            <img class="img-fluid" src="@/assets/codepen.jpg" />
+            <img alt="CodePen Logo" class="img-fluid" src="@/assets/codepen.jpg" />
           </template>
           <template v-slot:title>CodePen Collection</template>
           <template v-slot:description>

@@ -12,7 +12,7 @@
               >Check out the
               <i class="font-mono">
                 [<a
-                  href="https://github.com/markcummins/portfolio2022/settings"
+                  href="https://github.com/markcummins/portfolio2022/"
                   target="_blank"
                   >source code</a
                 >]

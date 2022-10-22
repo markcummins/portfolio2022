@@ -1,12 +1,12 @@
 <template>
   <div ref="overlay" class="overlay">
     <div ref="splash" class="splash">
-      <img src="@/assets/logo-dark.svg" />
+      <img alt="Dark Logo" src="@/assets/logo-dark.svg" />
     </div>
     <div ref="map" id="map"></div>
     <div ref="content" class="content">
       <div class="content-lhs" ref="contentLhs">
-        <img class="profile-picture" alt="Picture of Me" src="~@/assets/me.jpg" />
+        <img class="profile-picture" alt="Profile Picture" src="~@/assets/me.jpg" />
       </div>
       <div class="content-rhs" ref="contentRhs">
         <h3 class="font-mono font-labelle">Hello, my name is</h3>

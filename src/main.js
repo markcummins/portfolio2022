@@ -3,6 +3,12 @@ import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
 import { createApp } from 'vue'
+import { createHead } from "@vueuse/head"
+
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const vueApp = createApp(App);
+const head = createHead();
+
+vueApp.use(head);
+vueApp.mount('#app');

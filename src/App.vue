@@ -1,5 +1,26 @@
 <template>
   <div>
+    <Head>
+      <title>Mark Cummins</title>
+      <body :class="`theme-${theme}`" />
+      <meta
+        name="description"
+        content="Hi, my name is Mark and I am a software developer from Ireland who specializes in creating web apps and great online experiences"
+      />
+      <meta name="image" content="https://www.mark-cummins.com/static/og.png" />
+      <meta property="og:title" content="Mark Cummins" />
+      <meta
+        property="og:description"
+        content="Hi, my name is Mark and I am a software developer from Ireland who specializes in creating web apps and great online experiences"
+      />
+      <meta property="og:image" content="https://www.mark-cummins.com/static/og.png" />
+      <meta property="og:url" content="https://www.mark-cummins.com/" />
+      <meta property="og:type" content="website" />
+      <meta
+        name="keywords"
+        content="php developer remote, full-stack web developer portiflio, front-end web developer, full-stack software developer, "
+      />
+    </Head>
     <NavTop />
     <HeaderMap />
     <About id="section-about" />
@@ -12,7 +33,8 @@
 </template>
 
 <script>
-import { ref, provide, onMounted } from "vue";
+import { Head } from "@vueuse/head";
+import { ref, provide } from "vue";
 import NavTop from "./components/nav/header/nav.vue";
 import Footer from "./components/nav/footer/nav.vue";
 
@@ -26,6 +48,7 @@ import Statistics from "./components/sections/statistics.vue";
 export default {
   name: "App",
   components: {
+    Head,
     Work,
     About,
     Footer,
@@ -41,21 +64,12 @@ export default {
 
     provide("theme", theme);
     provide("switchTheme", () => {
-      const currentTheme = theme.value;
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-      document.body.classList.remove(`${themePrefix}-${currentTheme}`);
-      document.body.classList.add(`${themePrefix}-${newTheme}`);
-
       theme.value = theme.value === "dark" ? "light" : "dark";
-    });
-
-    onMounted(() => {
-      document.body.classList.add(`${themePrefix}-${theme.value}`);
     });
 
     return {
       theme,
+      themePrefix,
     };
   },
 };

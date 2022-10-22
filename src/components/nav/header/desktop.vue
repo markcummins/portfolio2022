@@ -2,8 +2,8 @@
   <div id="nav-top-desktop" :class="{ 'nav-hidden': scrollDirection === 'down' }">
     <div>
       <div>
-        <img v-if="theme === 'dark'" src="@/assets/logo-dark.svg" />
-        <img v-if="theme === 'light'" src="@/assets/logo-light.svg" />
+        <img v-if="theme === 'dark'" alt="Logo" src="@/assets/logo-dark.svg" />
+        <img v-if="theme === 'light'" alt="Logo" src="@/assets/logo-light.svg" />
       </div>
       <div>
         <div>
@@ -57,7 +57,10 @@ export default {
 
     onMounted(() => {
       window.addEventListener("scroll", () => {
-        scrollDirection.value = currentScroll.value > window.pageYOffset ? "up" : "down";
+        scrollDirection.value =
+          window.pageYOffset < 200 || currentScroll.value > window.pageYOffset
+            ? "up"
+            : "down";
         currentScroll.value = window.pageYOffset;
       });
     });

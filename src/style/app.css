@@ -16,10 +16,6 @@
   --font-labelle: "La Belle Aurore", "cursive";
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body.theme-light {
   --background: 250, 250, 252;
   --background-tint: 243, 243, 247;

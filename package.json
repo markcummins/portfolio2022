@@ -10,6 +10,7 @@
   "dependencies": {
     "@aws-amplify/ui-vue": "^2.4.24",
     "@carbon/icons-vue": "^10.49.1",
+    "@vueuse/head": "^0.9.8",
     "aws-amplify": "^4.3.39",
     "chart.js": "^3.9.1",
     "core-js": "^3.8.3",
