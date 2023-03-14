@@ -1,24 +1,9 @@
-# portfolio
+# Portfolio
 
-## Project setup
-```
-npm install
-```
+## Amplify Commands
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Upgrade Amplify
+- `npm install -g @aws-amplify/cli`
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Rebuild the App
+- `amplify publish`

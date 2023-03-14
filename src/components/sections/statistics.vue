@@ -91,7 +91,7 @@
                 <Tag tag="p">
                   The majority of the Development work is currently split between backend
                   development with PHP and frontend Development with Vue JS. The platform
-                  is quite large now, and the main GitHub repository has close to five
+                  is quite large now, and the main GitHub repository has over five
                   thousand commits. There is a good mix of developing and building new
                   features to the site &amp; maintaining all of the existing features.
                 </Tag>
