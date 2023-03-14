@@ -100,6 +100,9 @@
           </div>
         </ScrollAnimation>
       </div>
+      <ScrollAnimation :from="{ opacity: 0, y: 240 }" :to="{ opacity: 1, y: 0 }">
+        <GitHubStats />
+      </ScrollAnimation>
     </Container>
   </RootSection>
 </template>
@@ -108,6 +111,7 @@
 import Tag from "@/components/layout/tag.vue";
 import Title from "@/components/layout/title.vue";
 import Radar from "@/components/components/radar.vue";
+import GitHubStats from "@/components/components/github-stats.vue";
 import Container from "@/components/layout/container.vue";
 import RootSection from "@/components/layout/section-root.vue";
 import ScrollAnimation from "@/components/layout/scroll-animation.vue";
@@ -120,6 +124,7 @@ export default {
     Title,
     Container,
     RootSection,
+    GitHubStats,
     ScrollAnimation,
   },
 
