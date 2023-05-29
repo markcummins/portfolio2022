@@ -190,6 +190,34 @@
           </div>
 
           <br />
+          <h4 class="text-primary">Group Documents with Amazon AWS S3</h4>
+
+          <div>
+            <div>
+              <img
+                alt="Educate Magis Group Documents"
+                class="img-fluid rounded"
+                src="@/assets/educate-magis-group-docs.jpg"
+              />
+            </div>
+            <div>
+              <p>
+                Educate Magis Members can create groups where they can form
+                mini-communities within the Educate Magis site. Within their groups, they
+                can start conversations, create meetings and also upload and share files.
+              </p>
+              <p>
+                For managing group files, under the hood, we use a custom
+                <a href="https://aws.amazon.com/s3/">AWS S3</a> integration that manages
+                the files that members upload to the group. On the front-end we use a
+                custom Vue.JS app that interacts with our WordPress REST API that connects
+                to Amazon S3. That allows users to safely upload and manage their files
+                from within their Educate Magis Groups.
+              </p>
+            </div>
+          </div>
+
+          <br />
           <h4 class="text-primary">Other Areas &amp; Features</h4>
           <div>
             <div>
@@ -246,6 +274,141 @@
                 up to date with plugin vulnerabilities, and keep access log records and
                 daily DB backups. You can learn more about Educate Magis
                 <a href="https://www.educatemagis.org/about/" target="_blank">here</a>
+              </p>
+            </div>
+          </div>
+        </template>
+      </ProjectFeatured>
+
+      <ProjectFeatured :read-more="true">
+        <template v-slot:title>AI Tunes</template>
+        <template v-slot:img>
+          <img alt="VS Bam Theme Logo" src="@/assets/ai-tunes.png" />
+        </template>
+        <template v-slot:content>
+          <p>
+            AI Tunes is a fun side-project I made Using ChatGPT, Microsoft Text to Speech
+            and the Spotify Web API. It combines the three services to create a radio
+            station. The idea came from games such as Fallout or GTA, where you would have
+            an in-game radio station with a DJ. There are 7 radio stations that play songs
+            from playlists (e.g. Rock, Pop, Electronic .etc) using the Spotify Javascript
+            API.
+          </p>
+          <p>
+            After each third song, the
+            <a href="https://platform.openai.com/docs/models/chatgpt" target="_blank"
+              >ChatGPT API</a
+            >
+            is called to generate a script for our DJ. At the end of the song, I use
+            <a
+              href="https://azure.microsoft.com/en-us/products/cognitive-services/text-to-speech"
+              target="_blank"
+              >Microsofts TTS</a
+            >
+            (Text to Speech) api to read out the script using a different voice for each
+            Virtual Radio Host.
+          </p>
+          <p>
+            Unfortunately the
+            <a
+              href="https://developer.spotify.com/documentation/web-playback-sdk"
+              target="_blank"
+              >Spotify API</a
+            >
+            doesn't work on Mobile, and you also need a Spotify Premium account in order
+            to use the app. Click the Read More button below to see a video of the site in
+            action, or
+            <a href="https://github.com/markcummins/Spotify-DJ" target="_blank"
+              >browse the code here</a
+            >.
+          </p>
+        </template>
+        <template v-slot:tags
+          >React | Next.js | ChatGPT | Microsoft TTS | Spotify | GSAP</template
+        >
+        <template v-slot:icons>
+          <span>
+            <a href="https://www.ai-tunes.com/" target="_blank">
+              <IconLink />
+            </a>
+          </span>
+          <span>
+            <a href="https://github.com/markcummins/Spotify-DJ" target="_blank">
+              <IconGithub /> </a
+          ></span>
+        </template>
+        <template v-slot:more>
+          <h2 class="text-primary">AI Tunes</h2>
+          <div>
+            <IFrameR>
+              <source src="@/assets/videos/ai_tunes-login.mp4" type="video/mp4" />
+            </IFrameR>
+            <div>
+              <p>
+                Logging into the app registers the Webpage as a Spotify Device. From
+                there, we can control things like the playlist that's playing, and when to
+                Pause or Play the next track. The Background and Text color of the app
+                also changes based on the current cover art that's displayed.
+              </p>
+              <p>
+                One tricky thing was to detect the current time of the song, as the API
+                doesn't provide that feature. It's needed to detect when to get the script
+                for the next radio break, and when to pause and resume the song when the
+                DJ starts to speak
+              </p>
+              <p>
+                There is also a neat animation in the text that changes when a new song
+                starts, or when the radio station changes
+              </p>
+            </div>
+          </div>
+          <br />
+          <div>
+            <IFrameR>
+              <source
+                src="@/assets/videos/ai_tunes-midnight_groove.mp4#t=15"
+                type="video/mp4"
+              />
+            </IFrameR>
+            <div>
+              <p>
+                There are 7 Radio Stations, Circuit Radio (Electronic), 뮤직앤러브24
+                (KPop), Thunder Radio (Rock), Outcast (Indie), Revolution Radio (Reggae),
+                West Coast Waves (Pop) and Midnight Groove (Jazz).
+              </p>
+              <p>
+                Each station has its own unique DJ. The functionality of it is abstracted
+                into an object, so details about the DJ, their Playlist, Voice and Script
+                can all be controlled by editing the
+                <a
+                  href="https://github.com/markcummins/Spotify-DJ/blob/main/src/utils/stations.tsx"
+                  target="_blank"
+                  >stations.tsx</a
+                >
+                file
+              </p>
+              <p>
+                The idea here was to later create an interface that would allow the user
+                to create their own stations, choose their own playlist, DJ, voice .etc
+              </p>
+            </div>
+          </div>
+          <br />
+          <div>
+            <IFrameR>
+              <source src="@/assets/videos/ai_tunes-thunder_radio.mp4" type="video/mp4" />
+            </IFrameR>
+            <div>
+              <p>
+                Similar to what I was trying to create from Fallout and GTA, all the DJs
+                are a little unhinged. Some of them are flat earthers, some are convinced
+                that the government is watching their every move, and others are convinced
+                that someone is out to get them.
+              </p>
+              <p>
+                Another interesting possibility would be to have a Twitter channel set up
+                for each DJ. Because the script is loaded on the fly, you could read the
+                latest tweets and incorporate them into the DJ's script.
               </p>
             </div>
           </div>
@@ -400,7 +563,7 @@
                 >ESPC is Europe's leading online community</a
               >, providing educational resources and encouraging collaboration. Each year
               ESPC gathers SharePoint, Office 365 &amp; Azure experts from around the
-              world in one European location for the largest conference of its kind.
+              world in one European location for the largest conference of it's kind.
             </p>
             <p>
               In 2017, I worked with ESPC on the redesign and launch of their new WebSite.
@@ -577,6 +740,7 @@ import { inject } from "vue";
 import Title from "@/components/layout/title.vue";
 import ProjectFeatured from "@/components/layout/card-project-featured.vue";
 import ProjectMini from "@/components/layout/card-project-mini.vue";
+import IFrameR from "@/components/components/iframe-responsive.vue";
 import Container from "@/components/layout/container.vue";
 import RootSection from "@/components/layout/section-root.vue";
 
@@ -587,6 +751,7 @@ export default {
   name: "component-projects",
   components: {
     Title,
+    IFrameR,
     Container,
     ProjectMini,
     RootSection,
