@@ -568,8 +568,8 @@
             <p>
               In 2017, I worked with ESPC on the redesign and launch of their new WebSite.
               It included a scheduling system where atendee's could select the events that
-              they wanted to attend, a mobile app and and a ticketing system for Members
-              to purchase tickets to attend the conference.
+              they wanted to attend, a mobile app and a ticketing system for Members to
+              purchase tickets to attend the conference.
             </p>
           </template>
           <template v-slot:tags>WooCommerce | Foundation | WordPress | PHP</template>
